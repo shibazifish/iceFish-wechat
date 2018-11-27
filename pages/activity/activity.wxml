@@ -1,0 +1,15 @@
+<!--pages/activity/activity.wxml-->
+<view class="a-section a-new" wx:if="{{activityInfo.length > 0}}">
+    <view class="h">
+          <text class="txt">十一月活动震撼来袭</text>
+    </view>
+    <view class="b">
+      <view class="item" wx:for="{{activityInfo}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.activity_id}}">
+        <navigator url="../activityDetail/activityDetail?id={{item.activity_id}}">
+          <!-- <image class="img" src="{{item.list_pic_url}}" background-size="cover"></image> -->
+          <text class="name">{{item.activity_name}}</text>
+          <text class="price">奖品：{{item.activity_prize}}</text>
+        </navigator>
+      </view>
+    </view>
+  </view>

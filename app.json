@@ -1,5 +1,8 @@
 {
   "pages": [
+    "pages/grant/grant",
+    "pages/activity/activity",
+    "pages/activityDetail/activityDetail",
     "pages/index/index",
     "pages/catalog/catalog",
     "pages/newGoods/newGoods",
@@ -48,10 +51,10 @@
     "color": "#666",
     "list": [
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/activity/activity",
         "iconPath": "static/images/ic_menu_choice_nor.png",
         "selectedIconPath": "static/images/ic_menu_choice_pressed.png",
-        "text": "首页"
+        "text": "热门活动"
       },
       {
         "pagePath": "pages/catalog/catalog",

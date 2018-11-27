@@ -5,12 +5,16 @@ var user = require('./services/user.js');
 App({
   onLaunch: function () {
     //获取用户的登录信息
-    user.checkLogin().then(res => {
-      console.log('app login')
-      this.globalData.userInfo = wx.getStorageSync('userInfo');
-      this.globalData.token = wx.getStorageSync('token');
-    }).catch(() => {
-      
+    var that = this;
+    wx.login({
+      success: res => {
+        wx.request({
+          url: that.globalData.wx_url_1 + res.code + that.globalData.wx_url_2,
+          success: res => {
+            that.globalData.openid = res.data.openid;
+          }
+        })
+      }
     });
   },
   
@@ -21,5 +25,9 @@ App({
       avatar: 'http://yanxuan.nosdn.127.net/8945ae63d940cc42406c3f67019c5cb6.png'
     },
     token: '',
+    openid:'',
+    nickname: '',
+    wx_url_1: 'https://api.weixin.qq.com/sns/jscode2session?appid=wx4375865120f60592&secret=bdf2056097e96b3124ac43399fa2fdd2&js_code=',
+    wx_url_2: '&grant_type=authorization_code',
   }
 })
