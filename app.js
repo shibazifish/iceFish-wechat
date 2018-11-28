@@ -8,6 +8,7 @@ App({
     var that = this;
     wx.login({
       success: res => {
+        that.globalData.code = res.code
         wx.request({
           url: that.globalData.wx_url_1 + res.code + that.globalData.wx_url_2,
           success: res => {
@@ -26,6 +27,7 @@ App({
     },
     token: '',
     openid:'',
+    code: '',
     nickname: '',
     wx_url_1: 'https://api.weixin.qq.com/sns/jscode2session?appid=wx4375865120f60592&secret=bdf2056097e96b3124ac43399fa2fdd2&js_code=',
     wx_url_2: '&grant_type=authorization_code',

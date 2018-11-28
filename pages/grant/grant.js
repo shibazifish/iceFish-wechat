@@ -1,4 +1,8 @@
-// pages/grant/grant.js
+const util = require('../../utils/util.js');
+const api = require('../../config/api.js');
+const user = require('../../services/user.js');
+var app = getApp();
+
 Page({
 
   /**
@@ -13,24 +17,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.login({
-      success(res){
-        if(res.code){
-          openId
-        }
-      }
-    })
     // 查看是否授权
     wx.getSetting({
       success(res) {
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称
           wx.getUserInfo({
-            success: function (res) {
-              console.log(res.userInfo)
-              getApp().globalData.nickname = res.userInfo.nickName,
+            success : res => {
+              console.log(res.userInfo),
+              app.globalData.nickname = res.userInfo.nickName;
+              wx.navigateTo({
+                url: '../activity/activity',
+              })
             }
-          })
+          });
         }
       }
     })
@@ -39,9 +39,9 @@ Page({
   bindGetUserInfo(e) {
     let that = this;
     if (e.detail.userInfo) {//如果用户授权
-      getApp().globalData.nickname = e.detail.userInfo.nickName,
+      app.globalData.nickname = e.detail.userInfo.nickName,
       util.request(api.UserAddUrl, {
-        openid: getApp().globalData.openid,
+        openId: app.globalData.openid,
         nickName: e.detail.userInfo.nickName,
         gender: e.detail.userInfo.gender,
         avatarUrl: e.detail.userInfo.avatarUrl,
