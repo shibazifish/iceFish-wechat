@@ -1,0 +1,9 @@
+/* pages/clock/clock.wxss */
+.section__ctn{
+  display:flex; 
+  flex-direction:row;
+  justify-content:center;
+}
+button{
+  margin-top: 50rpx;
+}
