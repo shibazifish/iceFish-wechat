@@ -1,6 +1,7 @@
 const util = require('../../utils/util.js');
 const api = require('../../config/api.js');
 const user = require('../../services/user.js');
+var app = getApp();
 
 Page({
 
@@ -38,19 +39,24 @@ Page({
   },
   onEnter() {
     let that = this;
-    //判断用户是否授权
-    util.request(api.CommentPost, {
+    util.request(api.EnterAddUrl, {
       activity_id: that.data.id,
-      valueId: that.data.valueId,
-      content: that.data.content
+      user_id: app.globalData.openid,
+      user_name: app.globalData.nickname
     }, 'POST').then(function (res) {
       if (res.errno === 0) {
         wx.showToast({
-          title: '评论成功',
-          complete: function () {
-            wx.navigateBack({
-              delta: 1
-            });
+          title: '报名成功',
+          icon:'success',
+          duration:2000,
+          success:function(){
+            setTimeout(
+              function () {
+                wx.switchTab({
+                  url: '../activity/activity',
+                });
+              },2000
+            )
           }
         })
       }

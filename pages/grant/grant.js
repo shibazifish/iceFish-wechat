@@ -26,7 +26,7 @@ Page({
             success : res => {
               console.log(res.userInfo),
               app.globalData.nickname = res.userInfo.nickName;
-              wx.navigateTo({
+              wx.switchTab({
                 url: '../activity/activity',
               })
             }
@@ -54,9 +54,9 @@ Page({
         }
         console.log(res)
       });
-      wx.navigateTo({
+        wx.switchTab({
         url: '../activity/activity',
-      })
+      });
     }
   },
 
