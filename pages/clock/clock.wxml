@@ -1,6 +1,6 @@
 <!--pages/enter/enter.wxml-->
 <view>
-<view>欢迎：<open-data type="userNickName"></open-data>,今日步数：{{runData}}</view>
+<view>欢迎：<open-data type="userNickName"></open-data>,今日步数：{{runData}} 冰块：{{iceData}}</view>
       <view class="section__ctn">
 
        <open-data type="userAvatarUrl"></open-data>

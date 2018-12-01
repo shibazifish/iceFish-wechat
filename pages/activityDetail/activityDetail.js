@@ -10,7 +10,8 @@ Page({
    */
   data: {
     id:0,
-    activity:{}
+    prize:{},
+    exchangeResult:'',
   },
 
   /**
@@ -23,15 +24,15 @@ Page({
       // id: 1181000
     });
     var that = this;
-    this.getActivityDetail();
+    this.getPrizeDetail();
   },
 
-  getActivityDetail: function () {
+  getPrizeDetail: function () {
     let that = this;
-    util.request(api.ActivityDetailUrl, { id: that.data.id }).then(function (res) {
+    util.request(api.GoodsDetailUrl, { id: that.data.id }).then(function (res) {
       if (res.errno === 0) {
         that.setData({
-          activity: res.data
+          prize: res.data
         });
       }
     });
@@ -40,24 +41,30 @@ Page({
   onEnter() {
     let that = this;
     util.request(api.EnterAddUrl, {
-      activity_id: that.data.id,
-      user_id: app.globalData.openid,
+      goods_id: that.data.id,
+      open_id: app.globalData.openid,
       user_name: app.globalData.nickname
     }, 'POST').then(function (res) {
-      if (res.errno === 0) {
+      if (res.errno === 0 && res.data == 1) {
         wx.showToast({
-          title: '报名成功',
+          title: '兑换成功',
           icon:'success',
           duration:2000,
           success:function(){
             setTimeout(
               function () {
-                wx.switchTab({
-                  url: '../activity/activity',
-                });
+                that.setData({
+                  exchangeResult: '兑换成功，请截图加微信17391831366领取！',
+                })
               },2000
             )
           }
+        })
+      } else if (res.errno === 0 && res.data == 0) {
+        wx.showToast({
+          title: '冰块不足！',
+          icon: 'none',
+          duration: 2000
         })
       }
       console.log(res)

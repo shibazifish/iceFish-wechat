@@ -11,12 +11,18 @@ Page({
   data: {
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     openId : "",
+    inviter:"",
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // 页面初始化 options为页面跳转所带来的参数
+    this.setData({
+      inviter: parseInt(options.inviter)
+      // id: 1181000
+    });
     // 查看是否授权
     wx.getSetting({
       success(res) {
@@ -40,6 +46,9 @@ Page({
     let that = this;
     if (e.detail.userInfo) {//如果用户授权
       app.globalData.nickname = e.detail.userInfo.nickName,
+        wx.showLoading({
+          title: '授权中...',
+        })
       util.request(api.UserAddUrl, {
         openId: app.globalData.openid,
         nickName: e.detail.userInfo.nickName,
@@ -47,15 +56,16 @@ Page({
         avatarUrl: e.detail.userInfo.avatarUrl,
         province: e.detail.userInfo.province,
         country: e.detail.userInfo.country,
-        city: e.detail.userInfo.city
+        city: e.detail.userInfo.city,
+        inviter: that.data.inviter
       }, 'POST').then(function (res) {
         if (res.errno === 0) {
-
+          wx.hideLoading();
         }
-        console.log(res)
-      });
         wx.switchTab({
-        url: '../activity/activity',
+          url: '../activity/activity',
+        });
+        console.log(res)
       });
     }
   },

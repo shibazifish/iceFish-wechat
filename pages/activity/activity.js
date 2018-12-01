@@ -10,24 +10,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-    activityInfo:[],
+    goodsInfo:[],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getActivityInfo();
+    this.getGoodsInfo();
   },
   /**
-   * 获取活动信息 2018年11月27日20:11:24
+   * 获取奖品信息 2018年11月27日20:11:24
    */
-  getActivityInfo:function(){
+  getGoodsInfo:function(){
     let that = this;
-    util.request(api.ActivityInfoUrl).then(function (res) {
+    util.request(api.GoodsInfoUrl).then(function (res) {
       if (res.errno === 0) {
         that.setData({
-          activityInfo: res.data,
+          goodsInfo: res.data,
         });
       }
     });
@@ -45,7 +45,26 @@ Page({
   onShow: function () {
 
   },
+  onShareAppMessage: function (ops) {
+    if (ops.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(ops.target)
+    }
+    return {
+      title: '每天走路就能兑礼品啦！',
+      // imageUrl: 'http://xxxx',//图片地址
+      path: '/pages/grant/grant?inviter=app.globalData.openid',// 用户点击首先进入的当前页面
+      success: function (res) {
+        // 转发成功
+        console.log("转发成功:");
+      },
+      fail: function (res) {
+        // 转发失败
+        console.log("转发失败:");
+      }
+    }
 
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

@@ -12,7 +12,8 @@ Page({
   data: {
     encryptedData: '',
     iv: '',
-    runData:'12',
+    runData:0,
+    iceData:0,
   },
 
   /**
@@ -24,6 +25,9 @@ Page({
   bindGetRunData() {
     //获取用户的登录信息
     var that = this;
+    wx.showLoading({
+      title: '信息同步中...',
+    })
     wx.getWeRunData({
       success: res => {
         that.data.encryptedData = res.encryptedData;
@@ -40,7 +44,11 @@ Page({
               icon: 'success',
               duration: 2000,
               success: function () {
-                that.data.runData = res.data.clock_image_url
+                that.setData({
+                  runData : res.data.run_data,
+                  iceData:res.data.ice_data
+                });
+                wx.hideLoading();
               }
             })
           }
@@ -63,7 +71,9 @@ onSaveRunData:function(){
         icon: 'success',
         duration: 2000,
         success: function () {
-          that.data.runData = res.data
+          that.setDat({
+            runData : res.data
+          })
         }
       })
     }

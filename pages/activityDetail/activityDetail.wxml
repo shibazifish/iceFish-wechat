@@ -1,16 +1,16 @@
 <!--pages/activityDetail/activityDetail.wxml-->
-<view class="goods-info">
-      <view class="c">
-        <text class="name">{{activity.activity_name}}</text>
-        <text class="desc">{{activity.activity_desc}}</text>
-        <text class="price">{{activity.activity_prize}}</text>
+<view>
+    <view class="goods-info">
+          <view class="c">
+            <text class="name">{{prize.goods_name}}</text>
+            <text class="desc">{{prize.goods_desc}}</text>
+            <text class="desc">{{prize.goods_detail}}</text>
+            <text class="price">￥:{{prize.goods_price}}元 {{prize.goods_ice}}块</text>
+          </view>
       </view>
-  </view>
-  
-      <!-- <view class="btns">
-            <view class="post" bindtap="onPost">发表</view>
-      </view> -->
 
       <view>
-        <button bindtap="onEnter">立即报名</button>
+        <button bindtap="onEnter">立即兑换</button>
       </view>
+      <view>{{exchangeResult}}</view>
+</view>
