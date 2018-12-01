@@ -7,4 +7,5 @@ module.exports = {
   EnterAddUrl: ApiRootUrl + 'enter/add',//报名
   UserAddUrl: ApiRootUrl + 'user/add',//插入微信用户信息
   ImageAddUrl: ApiRootUrl + 'image/upload', //图片上传
+  ClockAddUrl: ApiRootUrl + 'clock/add',//保存跑步信息
 };
