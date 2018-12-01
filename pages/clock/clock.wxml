@@ -1,8 +1,10 @@
 <!--pages/enter/enter.wxml-->
-<view class="section__ctn">
-        <image style="width: 200px; height: 200px; background-color: #eeeeee;" mode="aspectFit" src="{{fileShowUrl}}"></image>
-      </view>
 <view>
-        <button bindtap="bindChooiceProduct">选择图片</button>
-        <button bindtap="bindChooiceProduct">上传打卡</button>
+<view>欢迎：<open-data type="userNickName"></open-data>,今日步数：{{runData}}</view>
+      <view class="section__ctn">
+
+       <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <button bindtap="bindGetRunData">步数打卡</button>
 </view>
+        

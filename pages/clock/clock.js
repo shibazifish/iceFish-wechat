@@ -1,11 +1,18 @@
 // pages/clock/clock.js
+const util = require('../../utils/util.js');
+const api = require('../../config/api.js');
+const user = require('../../services/user.js');
+var app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    encryptedData: '',
+    iv: '',
+    runData:'12',
   },
 
   /**
@@ -14,7 +21,55 @@ Page({
   onLoad: function (options) {
 
   },
+  bindGetRunData() {
+    //获取用户的登录信息
+    var that = this;
+    wx.getWeRunData({
+      success: res => {
+        that.data.encryptedData = res.encryptedData;
+        that.data.iv = res.iv;
+        util.request(api.ClockAddUrl, {
+          encryptedData: that.data.encryptedData,
+          iv: that.data.iv,
+          session_key: app.globalData.session_key,
+          open_id: app.globalData.openid
+        }, 'POST').then(function (res) {
+          if (res.errno === 0) {
+            wx.showToast({
+              title: '打卡成功',
+              icon: 'success',
+              duration: 2000,
+              success: function () {
+                that.data.runData = res.data.clock_image_url
+              }
+            })
+          }
+          console.log(res)
+        });
+      }
+    });
+  },
 
+onSaveRunData:function(){
+  let that = this;
+  util.request(api.ClockAddUrl, {
+    encryptedData: that.data.encryptedData,
+    iv: that.data.iv,
+    session_key: app.globalData.session_key
+  }, 'POST').then(function (res) {
+    if (res.errno === 0) {
+      wx.showToast({
+        title: '打卡成功',
+        icon: 'success',
+        duration: 2000,
+        success: function () {
+          that.data.runData = res.data
+        }
+      })
+    }
+    console.log(res)
+  });
+},
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
