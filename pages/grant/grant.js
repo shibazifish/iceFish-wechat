@@ -48,7 +48,7 @@ Page({
       app.globalData.nickname = e.detail.userInfo.nickName,
         wx.showLoading({
           title: '授权中...',
-        })
+        });
       util.request(api.UserAddUrl, {
         openId: app.globalData.openid,
         nickName: e.detail.userInfo.nickName,
