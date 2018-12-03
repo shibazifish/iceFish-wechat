@@ -12,5 +12,5 @@
         </navigator>
       </view>
     </view>
-    <button bindtap='onShareAppMessage' open-type="share">邀请好友得冰块</button>
+    <button bindtap='onShareAppMessage' open-type="share">邀请好友</button>
   </view>

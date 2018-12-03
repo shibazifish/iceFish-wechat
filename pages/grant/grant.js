@@ -26,7 +26,7 @@ Page({
     // 查看是否授权
     wx.getSetting({
       success(res) {
-        if (res.authSetting['scope.userInfo']) {
+        if (res.authSetting['scope.userInfo'] && app.globalData.openid != '') {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称
           wx.getUserInfo({
             success : res => {
@@ -44,6 +44,22 @@ Page({
 
   bindGetUserInfo(e) {
     let that = this;
+    if (app.globalData.openid == ''){
+      wx.showLoading({
+        title: '登陆中...',
+      });
+
+      util.request(api.UserLoginUrl, {
+        code: app.globalData.code
+      }, 'GET').then(function (res) {
+        wx.hideLoading();
+        if (res.errno === 0) {
+          app.globalData.openid = res.data.openid;
+          app.globalData.session_key = res.data.session_key;
+        }
+        console.log(res)
+      });
+    }
     if (e.detail.userInfo) {//如果用户授权
       app.globalData.nickname = e.detail.userInfo.nickName,
       wx.showLoading({
