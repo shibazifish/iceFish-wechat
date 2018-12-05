@@ -7,3 +7,34 @@
 button{
   margin-top: 50rpx;
 }
+.item{
+  margin-top: 35rpx;
+}
+.item view{
+  padding-bottom: 35rpx;
+}
+.item .ice{
+  width: 100rpx;
+  height:120rpx;
+  float: left;
+  font-size: 64rpx;
+  background-color:#D0FFFF;
+  line-height: 120rpx;
+  text-align:center;
+}
+.item .detail{
+  float: left;
+  width: calc(100% - 100rpx);
+}
+.run{
+  padding-left: 20rpx;
+  background-color:#F0FFFF;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+.time{
+  padding-left: 20rpx;
+  background-color:#E1FFFF;
+  height: 60rpx;
+  line-height: 60rpx;
+}

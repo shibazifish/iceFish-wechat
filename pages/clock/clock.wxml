@@ -6,5 +6,13 @@
        <open-data type="userAvatarUrl"></open-data>
       </view>
       <button bindtap="bindGetRunData">步数打卡</button>
+      <view class="item" wx:for="{{clockInfo}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.clock_id}}">
+      
+          <view class='ice'>{{item.ice_data}}</view>
+          <view class='detail'>
+            <view class='run'>{{item.run_data}}</view>
+            <view class='time'>{{item.create_time}}</view>
+          </view>
+      </view>
 </view>
         

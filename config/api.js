@@ -10,4 +10,5 @@ module.exports = {
   UserLoginUrl: ApiRootUrl + 'user/login',//登录微信
   ImageAddUrl: ApiRootUrl + 'image/upload', //图片上传
   ClockAddUrl: ApiRootUrl + 'clock/add',//保存跑步信息
+  ClockInfoUrl: ApiRootUrl + 'clock/info',//获取打卡信息
 };

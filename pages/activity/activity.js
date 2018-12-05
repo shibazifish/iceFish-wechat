@@ -25,9 +25,9 @@ Page({
       wx.navigateTo({
         url: '/pages/grant/grant'
       })
-    }else{ 
+    }else{
       this.getGoodsInfo();
-      }
+    }
     
   },
   /**

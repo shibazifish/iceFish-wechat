@@ -8,7 +8,7 @@
         <navigator url="../activityDetail/activityDetail?id={{item.goods_id}}">
           <!-- <image class="img" src="{{item.list_pic_url}}" background-size="cover"></image> -->
           <text class="name">{{item.goods_name}}</text>
-          <text class="price">￥：{{item.goods_price}}元 冰块{{item.goods_ice}}块</text>
+          <text class="price">库存：{{item.goods_num}}个 冰块{{item.goods_ice}}块</text>
         </navigator>
       </view>
     </view>

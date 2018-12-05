@@ -14,13 +14,36 @@ Page({
     iv: '',
     runData:0,
     iceData:0,
+    clockInfo:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    if (app.globalData.openid == '') {
+      wx.navigateTo({
+        url: '/pages/grant/grant'
+      })
+    };
+    this.getClockInfo();
+  },
+  /**
+  * 获取奖品信息 2018年11月27日20:11:24
+  */
+  getClockInfo: function () {
+    wx.showLoading({
+      title: '数据加载中...',
+    })
+    let that = this;
+    util.request(api.ClockInfoUrl, { open_id: app.globalData.openid, }).then(function (res) {
+      wx.hideLoading();
+      if (res.errno === 0) {
+        that.setData({
+          clockInfo: res.data,
+        });
+      }
+    });
   },
   bindGetRunData() {
     //获取用户的登录信息
@@ -52,6 +75,7 @@ Page({
                   runData : res.data.run_data,
                   iceData:res.data.ice_data
                 });
+                this.getClockInfo();
                 wx.hideLoading();
               }
             })

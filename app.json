@@ -3,7 +3,8 @@
     "pages/grant/grant",
     "pages/activity/activity",
     "pages/activityDetail/activityDetail",
-    "pages/clock/clock"
+    "pages/clock/clock",
+    "pages/queryIce/queryIce"
   ],
   "window": {
     "backgroundTextStyle": "dark",
