@@ -66,6 +66,12 @@ Page({
           icon: 'none',
           duration: 2000
         })
+      }else if (res.errno === 0 && res.data == -1) {
+        wx.showToast({
+          title: '库存不足！',
+          icon: 'none',
+          duration: 2000
+        })
       }
       console.log(res)
     });
