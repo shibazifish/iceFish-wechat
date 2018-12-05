@@ -1,7 +1,6 @@
 const util = require('../../utils/util.js');
 const api = require('../../config/api.js');
 const user = require('../../services/user.js');
-
 //获取应用实例
 const app = getApp()
 Page({
@@ -11,13 +10,25 @@ Page({
    */
   data: {
     goodsInfo:[],
+    inviter:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getGoodsInfo();
+    wx.showLoading({
+      title: '数据加载中...',
+    })
+    if (app.globalData.openid == '') {
+      wx.hideLoading();
+      wx.navigateTo({
+        url: '/pages/grant/grant'
+      })
+    }else{ 
+      this.getGoodsInfo();
+      }
+    
   },
   /**
    * 获取奖品信息 2018年11月27日20:11:24
@@ -25,6 +36,7 @@ Page({
   getGoodsInfo:function(){
     let that = this;
     util.request(api.GoodsInfoUrl).then(function (res) {
+      wx.hideLoading();
       if (res.errno === 0) {
         that.setData({
           goodsInfo: res.data,
@@ -52,8 +64,8 @@ Page({
     }
     return {
       title: '每天走路就能兑礼品啦！',
-      // imageUrl: 'http://xxxx',//图片地址
-      path: '/pages/grant/grant?inviter=app.globalData.openid',// 用户点击首先进入的当前页面
+      imageUrl: 'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1543732178&di=e8251a5c7078d24102712431ff087aa0&src=http://imgsrc.baidu.com/imgad/pic/item/8cb1cb13495409239d3f01f19858d109b2de49ee.jpg',//图片地址
+      path: '/pages/activity/activity?inviter=app.globalData.openid',// 用户点击首先进入的当前页面
       success: function (res) {
         // 转发成功
         console.log("转发成功:");

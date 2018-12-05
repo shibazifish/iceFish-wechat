@@ -26,12 +26,16 @@ Page({
     //获取用户的登录信息
     var that = this;
     wx.showLoading({
-      title: '信息同步中...',
+      title: '信息获取中...',
     })
     wx.getWeRunData({
       success: res => {
         that.data.encryptedData = res.encryptedData;
         that.data.iv = res.iv;
+        wx.hideLoading();
+        wx.showLoading({
+          title: '信息同步中...',
+        })
         util.request(api.ClockAddUrl, {
           encryptedData: that.data.encryptedData,
           iv: that.data.iv,
