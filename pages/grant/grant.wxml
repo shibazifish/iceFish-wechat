@@ -2,8 +2,11 @@
 <!-- <open-data type="userAvatarUrl"></open-data>
 <open-data type="userNickName"></open-data> -->
 <!-- 需要使用 button 来授权登录 -->
-<view style='text-align:center' wx:if="{{canIUse}}">
-<text style='font-size:28rpx;margin-bottom:24rpx;'>小冰需要您的授权</text>
-<button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+<view class="container">
+    <form bindsubmit="bindSave" wx:if="{{canIUse}}">
+    <view style='width:100%;padding-left:30rpx;font-size: 28rpx;margin-top:30rpx;'>1、同意小冰获取您的微信头像；</view>
+    <view style='width:100%;padding-left:30rpx;font-size: 28rpx;margin-top:30rpx;'>2、同意小冰获取您的微信昵称等其他信息；</view>
+    <button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" class="save-btn">授权登录</button>
+    </form>
+    <label wx:else>请升级微信版本</label>
 </view>
-<view wx:else>请升级微信版本</view>

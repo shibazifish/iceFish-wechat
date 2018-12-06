@@ -1,16 +1,25 @@
 <!--pages/activity/activity.wxml-->
-<view class="a-section a-new" wx:if="{{goodsInfo.length > 0}}">
+<view class="a-section a-popular" wx:if="{{goodsInfo.length > 0}}">
     <view class="h">
-          <text class="txt">十二月活动震撼来袭</text>
+      <view>
+        <text class="txt">十二月活动震撼来袭</text>
+      </view>
     </view>
     <view class="b">
       <view class="item" wx:for="{{goodsInfo}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.goods_id}}">
-        <navigator url="../activityDetail/activityDetail?id={{item.goods_id}}">
-          <!-- <image class="img" src="{{item.list_pic_url}}" background-size="cover"></image> -->
-          <text class="name">{{item.goods_name}}</text>
-          <text class="price">库存：{{item.goods_num}}个 冰块{{item.goods_ice}}块</text>
+        <navigator url="/pages/activityDetail/activityDetail?id={{item.goods_id}}">
+          <image class="img" src="{{item.goods_url}}" background-size="cover"></image>
+          <view class="right">
+            <view class="text">
+              <text class="name">{{item.goods_name}}</text>
+              <text class="desc">库存：{{item.goods_num}}</text>
+              <text class="price">{{item.goods_ice}}块</text>
+            </view>
+          </view>
         </navigator>
       </view>
     </view>
-    <button bindtap='onShareAppMessage' open-type="share">邀请好友</button>
+    <view>
+      <button bindtap='onShareAppMessage' open-type="share">邀请好友</button>
+    </view>
   </view>
