@@ -75,7 +75,7 @@ Page({
                   runData : res.data.run_data,
                   iceData:res.data.ice_data
                 });
-                this.getClockInfo();
+                that.getClockInfo();
                 wx.hideLoading();
               }
             })
