@@ -3,8 +3,31 @@
   display:flex; 
   flex-direction:row;
   justify-content:center;
+  width: 50vw;
+  float: left;
+}
+.section__ctn image{
+  border-radius: 140rpx;
+  height: 140rpx;
+  width: 140rpx;
+  text-align: center;
+  display:flex; 
+  flex-direction:row;
+  justify-content:center;
+}
+.runInfo{
+  float: left;
+}
+.runInfo view{
+  width: 40vw;
+  padding-left: 7vw;
 }
 button{
+  float: none;
+  width: 98vw;
+  margin-top: 50rpx;
+}
+.btn{
   margin-top: 50rpx;
 }
 .item{
@@ -37,4 +60,9 @@ button{
   background-color:#E1FFFF;
   height: 60rpx;
   line-height: 60rpx;
+}
+.c{
+  height: calc(100vh - 260rpx);
+  overflow: scroll;
+  margin-top: 10rpx;
 }

@@ -15,6 +15,7 @@ Page({
     runData:0,
     iceData:0,
     clockInfo:'',
+    wechatUser: '',
   },
 
   /**
@@ -40,7 +41,8 @@ Page({
       wx.hideLoading();
       if (res.errno === 0) {
         that.setData({
-          clockInfo: res.data,
+          clockInfo: res.data.clock,
+          wechatUser: res.data.wechatUser,
         });
       }
     });

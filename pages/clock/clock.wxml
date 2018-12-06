@@ -1,18 +1,24 @@
 <!--pages/enter/enter.wxml-->
 <view>
-<view>欢迎：<open-data type="userNickName"></open-data>,今日步数：{{runData}} 冰块：{{iceData}}</view>
       <view class="section__ctn">
-
-       <open-data type="userAvatarUrl"></open-data>
+       <image mode='scaleToFill' src='{{wechatUser.avatarUrl}}'></image>
       </view>
-      <button bindtap="bindGetRunData">步数打卡</button>
-      <view class="item" wx:for="{{clockInfo}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.clock_id}}">
-      
-          <view class='ice'>{{item.ice_data}}</view>
-          <view class='detail'>
-            <view class='run'>{{item.run_data}}</view>
-            <view class='time'>{{item.create_time}}</view>
-          </view>
+       <view class='runInfo'>
+          <view>打卡步数：{{runData}}</view>
+          <view>打卡冰块：{{iceData}}</view>
+          <view>累计步数：{{wechatUser.countRunData}}</view>
+          <view>可用冰块：{{wechatUser.iceData}}</view>
+       </view>
+       <button bindtap="bindGetRunData">步数打卡</button>
+      <view class='c'>
+        <view class="item" wx:for="{{clockInfo}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.clock_id}}">
+        
+            <view class='ice'>{{item.ice_data}}</view>
+            <view class='detail'>
+              <view class='run'>{{item.run_data}}</view>
+              <view class='time'>{{item.create_time}}</view>
+            </view>
+        </view>
       </view>
 </view>
         
