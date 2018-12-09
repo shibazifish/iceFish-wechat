@@ -1,0 +1,7 @@
+/* pages/poster/poster.wxss */
+canvas{
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+  /* background-color:#ECC542; */
+}

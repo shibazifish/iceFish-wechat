@@ -27,12 +27,12 @@ Page({
         url: '/pages/grant/grant'
       })
     };
-    this.getClockInfo();
+    this.getClockInfo(false);
   },
   /**
   * 获取奖品信息 2018年11月27日20:11:24
   */
-  getClockInfo: function () {
+  getClockInfo: function (isGoto) {
     wx.showLoading({
       title: '数据加载中...',
     })
@@ -44,6 +44,11 @@ Page({
           clockInfo: res.data.clock,
           wechatUser: res.data.wechatUser,
         });
+        if(isGoto){//是否跳转海报页面
+          wx.navigateTo({
+            url: '/pages/poster/poster?runData=' + that.data.wechatUser.countRunData + '&days=' + that.data.clockInfo.length,
+          })
+        }
       }
     });
   },
@@ -77,7 +82,7 @@ Page({
                   runData : res.data.run_data,
                   iceData:res.data.ice_data
                 });
-                that.getClockInfo();
+                that.getClockInfo(true);
                 wx.hideLoading();
               }
             })

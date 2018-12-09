@@ -1,0 +1,2 @@
+<canvas canvas-id="firstCanvas" bindlongtap='onClick'>
+</canvas>

@@ -4,7 +4,8 @@
     "pages/activity/activity",
     "pages/activityDetail/activityDetail",
     "pages/clock/clock",
-    "pages/queryIce/queryIce"
+    "pages/queryIce/queryIce",
+    "pages/poster/poster"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -23,7 +24,7 @@
         "pagePath": "pages/activity/activity",
         "iconPath": "static/images/ic_menu_choice_nor.png",
         "selectedIconPath": "static/images/ic_menu_choice_pressed.png",
-        "text": "热门活动"
+        "text": "奖品兑换"
       },
       {
         "pagePath": "pages/clock/clock",
