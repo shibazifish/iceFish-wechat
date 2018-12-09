@@ -20,15 +20,14 @@ Page({
     wx.showLoading({
       title: '数据加载中...',
     })
-    if (app.globalData.openid == '') {
-      wx.hideLoading();
-      wx.navigateTo({
-        url: '/pages/grant/grant'
-      })
-    }else{
-      this.getGoodsInfo();
-    }
-    
+    this.getGoodsInfo();
+    setTimeout(function () {
+      if (app.globalData.nickname == '') {
+        wx.navigateTo({
+          url: '/pages/grant/grant'
+        })
+      }
+    }, 4000);
   },
   /**
    * 获取奖品信息 2018年11月27日20:11:24

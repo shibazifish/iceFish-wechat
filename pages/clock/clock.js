@@ -22,11 +22,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (app.globalData.openid == '') {
-      wx.navigateTo({
-        url: '/pages/grant/grant'
-      })
-    };
+    setTimeout(function () {
+      if (app.globalData.nickname == '') {
+        wx.navigateTo({
+          url: '/pages/grant/grant'
+        })
+      }
+    }, 2000);
     this.getClockInfo(false);
   },
   /**
@@ -41,7 +43,7 @@ Page({
       wx.hideLoading();
       if (res.errno === 0) {
         that.setData({
-          clockInfo: res.data.clock,
+          clockInfo: util.formatJsonTime(res.data.clock,'create_time'),
           wechatUser: res.data.wechatUser,
         });
         if(isGoto){//是否跳转海报页面
@@ -85,6 +87,11 @@ Page({
                 that.getClockInfo(true);
                 wx.hideLoading();
               }
+            })
+          }else{
+            wx.hideLoading();
+            wx.showToast({
+              title: '打卡失败！',
             })
           }
           console.log(res)

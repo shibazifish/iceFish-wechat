@@ -19,47 +19,35 @@ Page({
    */
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
-    this.setData({
-      inviter: parseInt(options.inviter)
-      // id: 1181000
-    });
-    // 查看是否授权
-    wx.getSetting({
-      success(res) {
-        if (res.authSetting['scope.userInfo'] && app.globalData.openid != '') {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-          wx.getUserInfo({
-            success : res => {
-              console.log(res.userInfo),
-              app.globalData.nickname = res.userInfo.nickName;
-              wx.switchTab({
-                url: '../activity/activity',
-              })
-            }
-          });
-        }
-      }
-    })
+    // if (app.globalData.openid != ''){
+    //   wx.showLoading({
+    //     title: '信息获取中...',
+    //   });
+    //   util.request(api.UserInfoUrl, {
+    //     openId: app.globalData.openid
+    //   }, 'GET').then(function (res) {
+    //     wx.hideLoading();
+    //     if (res.errno === 0) {
+    //       app.globalData.nickname = res.data.nickName;
+    //       wx.switchTab({
+    //         url: '../activity/activity',
+    //       })
+    //     } else {
+    //       wx.showToast({
+    //         title: '信息获取失败！',
+    //       })
+    //     }
+    //   });
+    // } else {
+    //   wx.showLoading({
+    //     title: '登陆中...',
+    //   });
+    //   setTimeout(function(){wx.hideLoading()},1000);
+    // }
   },
 
   bindGetUserInfo(e) {
     let that = this;
-    if (app.globalData.openid == ''){
-      wx.showLoading({
-        title: '登陆中...',
-      });
-
-      util.request(api.UserLoginUrl, {
-        code: app.globalData.code
-      }, 'GET').then(function (res) {
-        wx.hideLoading();
-        if (res.errno === 0) {
-          app.globalData.openid = res.data.openid;
-          app.globalData.session_key = res.data.session_key;
-        }
-        console.log(res)
-      });
-    }
     if (e.detail.userInfo) {//如果用户授权
       app.globalData.nickname = e.detail.userInfo.nickName,
       wx.showLoading({
@@ -75,12 +63,16 @@ Page({
         city: e.detail.userInfo.city,
         inviter: that.data.inviter
       }, 'POST').then(function (res) {
+        wx.hideLoading();
         if (res.errno === 0) {
-          wx.hideLoading();
+          wx.switchTab({
+            url: '../activity/activity',
+          });
+        }else{
+          wx.showToast({
+            title: '授权失败！',
+          })
         }
-        wx.switchTab({
-          url: '../activity/activity',
-        });
         console.log(res)
       });
     }

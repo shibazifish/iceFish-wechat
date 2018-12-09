@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/grant/grant",
     "pages/activity/activity",
+    "pages/grant/grant",
     "pages/activityDetail/activityDetail",
     "pages/clock/clock",
     "pages/queryIce/queryIce",

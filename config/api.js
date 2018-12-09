@@ -10,4 +10,5 @@ module.exports = {
   ImageAddUrl: ApiRootUrl + 'image/upload', //图片上传
   ClockAddUrl: ApiRootUrl + 'clock/add',//保存跑步信息
   ClockInfoUrl: ApiRootUrl + 'clock/info',//获取打卡信息
+  UserInfoUrl: ApiRootUrl + 'user/get',//获取用户信息
 };

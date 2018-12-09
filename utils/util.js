@@ -12,6 +12,15 @@ function formatTime(date) {
 
   return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
+/**
+ * 格式化返回数据中的某个字段
+ */
+function formatJsonTime(jsonArr,fieldName){
+  for (let i = 0; i < jsonArr.length; i++) {
+    jsonArr[i][fieldName] = this.formatTime(new Date(jsonArr[i][fieldName]));
+  }
+  return jsonArr;
+}
 
 function formatNumber(n) {
   n = n.toString()
@@ -160,6 +169,7 @@ module.exports = {
   checkSession,
   login,
   getUserInfo,
+  formatJsonTime,
 }
 
 

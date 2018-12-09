@@ -13,13 +13,10 @@
             <view class="text">
               <text class="name">{{item.goods_name}}</text>
               <text class="desc">库存：{{item.goods_num}}</text>
-              <text class="price">{{item.goods_ice}}块</text>
+              <text class="price">{{item.goods_ice}}</text>
             </view>
           </view>
         </navigator>
       </view>
-    </view>
-    <view>
-      <button bindtap='onShareAppMessage' open-type="share">邀请好友</button>
     </view>
   </view>

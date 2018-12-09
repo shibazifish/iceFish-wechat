@@ -15,6 +15,17 @@ App({
           if (res.errno === 0) {
             that.globalData.openid = res.data.openid;
             that.globalData.session_key = res.data.session_key;
+            util.request(api.UserInfoUrl, {
+              openId: res.data.openid
+            }, 'GET').then(function (res) {
+              if (res.errno === 0) {
+                that.globalData.nickname = res.data.nickName;
+              } else {
+                wx.navigateTo({
+                  url: '/pages/grant/grant'
+                })
+              }
+            });
           }
           console.log(res)
         });
