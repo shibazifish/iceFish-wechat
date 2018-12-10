@@ -75,7 +75,7 @@ Page({
         ctx.fillText('长按识别二维码进入活动', 80, windH - 20);
         //提示信息
         ctx.setTextAlign('left');
-        ctx.setFillStyle('white')
+        ctx.setFillStyle('white');
         ctx.setFontSize(24);
         ctx.fillText('我已在冰鱼运动累计打卡' + that.data.days + '天', 10, 60);
         ctx.setFontSize(12);
@@ -83,16 +83,18 @@ Page({
         //时间
         var nowDate = new Date();
         var year = nowDate.getFullYear();
-        var month = nowDate.getMonth() + 1;
+        var month = nowDate.getMonth();
         var days = nowDate.getDate();
+        var monthArry = ["JAN.", "FEB.", "MAR.", "APR.", "MAY.", "JUN.", "JUL.", "AUG.", "SEPT.", "OCT.", "NOV.","DEC."];
         //时间 日
+        ctx.setFillStyle('black');
         ctx.setTextAlign('left');
         ctx.setFontSize(66);
         ctx.fillText(days, 20, windH - 110);
         ctx.setFontSize(24);
         ctx.fillText(year, 100, windH - 135);
         ctx.setFontSize(24);
-        ctx.fillText(month, 100, windH - 110);
+        ctx.fillText(monthArry[month], 100, windH - 110);
 
         ctx.draw();
         wx.hideLoading();
