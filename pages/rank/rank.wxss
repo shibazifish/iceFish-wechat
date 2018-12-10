@@ -1,0 +1,18 @@
+/* pages/rank/rank.wxss */
+.page__bd{
+    height: 100%;
+}
+.page__bd{
+    padding-bottom: 0;
+}
+.weui-tab__content{
+    padding-top: 60px;
+    text-align: center;
+}
+.img {
+  margin-top: 12rpx;
+  margin-right: 12rpx;
+  float: left;
+  width: 140rpx;
+  height: 140rpx;
+}

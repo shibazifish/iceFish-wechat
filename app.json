@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/rank/rank",
     "pages/activity/activity",
     "pages/grant/grant",
     "pages/activityDetail/activityDetail",
     "pages/clock/clock",
-    "pages/queryIce/queryIce",
     "pages/poster/poster"
   ],
   "window": {
@@ -31,6 +31,12 @@
         "iconPath": "static/images/ic_menu_sort_nor.png",
         "selectedIconPath": "static/images/ic_menu_sort_pressed.png",
         "text": "运动打卡"
+      },
+      {
+        "pagePath": "pages/rank/rank",
+        "iconPath": "static/images/ic_menu_me_nor.png",
+        "selectedIconPath": "static/images/ic_menu_me_pressed.png",
+        "text": "排行榜"
       }
     ]
   },
