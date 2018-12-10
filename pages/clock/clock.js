@@ -16,6 +16,7 @@ Page({
     iceData:0,
     clockInfo:'',
     wechatUser: '',
+    posterColor:'',
   },
 
   /**
@@ -45,10 +46,11 @@ Page({
         that.setData({
           clockInfo: util.formatJsonTime(res.data.clock,'create_time'),
           wechatUser: res.data.wechatUser,
+          posterClolr:res.data.posterClolr.para_value,
         });
         if(isGoto){//是否跳转海报页面
           wx.navigateTo({
-            url: '/pages/poster/poster?runData=' + that.data.wechatUser.countRunData + '&days=' + that.data.clockInfo.length,
+            url: '/pages/poster/poster?runData=' + that.data.wechatUser.countRunData + '&days=' + that.data.clockInfo.length + '&posterClolr=' + that.data.posterClolr,
           })
         }
       }
@@ -93,6 +95,7 @@ Page({
             wx.showToast({
               title: '打卡失败！',
             })
+            util.login();
           }
           console.log(res)
         });

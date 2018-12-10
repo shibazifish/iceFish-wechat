@@ -5,13 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    backImg:"../../static/images/taotie.jpg",
-    miniImg: "../../static/images/mini1.jpg",
-    icefishImg: "../../static/images/icefish.png",
+    backImg:"https://www.taotieshop.club/icefish/poster/taotie.jpg",
+    miniImg: "https://www.taotieshop.club/icefish/poster/mini1.jpg",
+    icefishImg: "https://www.taotieshop.club/icefish/poster/icefish.png",
     days:"365",
     runData: "99999",
     clockInfo:'',
     wechatUser:'',
+    posterClolr:'#ECC542',
   },
 
   /**
@@ -25,6 +26,7 @@ Page({
     this.setData({
       days: options.days,
       runData: options.runData,
+      posterClolr: options.posterClolr,
     });
   },
 
@@ -38,26 +40,64 @@ Page({
     var windH = wx.getSystemInfoSync().windowHeight;
     var windW = wx.getSystemInfoSync().windowWidth;
     ctx.save();
-    ctx.setFillStyle('#ECC542');
+    ctx.setFillStyle(that.data.posterClolr);
     ctx.fillRect(0, 0, windW, windH);
-    ctx.drawImage(that.data.backImg, 0, 0, windW, windH -90);
-    ctx.drawImage(that.data.miniImg,windW -85, windH - 85, 80,80);
-    ctx.drawImage(that.data.icefishImg, 10, windH - 70, 60, 60);
-    ctx.restore();
-    ctx.setTextAlign('left');
-    ctx.setFontSize(14);
-    ctx.fillText('冰鱼运动', 80, windH - 40);
-    ctx.setFontSize(10);
-    ctx.fillText('长按识别二维码进入活动', 80, windH-20);
-    //提示信息
-    ctx.setTextAlign('left');
-    ctx.setFillStyle('white')
-    ctx.setFontSize(24);
-    ctx.fillText('我已在冰鱼运动累计打卡' + that.data.days + '天', 10, 60);
-    ctx.setFontSize(12);
-    ctx.fillText('累计' + that.data.runData + '步', 10, 80);
-    ctx.draw();
-    wx.hideLoading();
+    wx.getImageInfo({
+      src: that.data.backImg,
+      success: function (res) {
+        ctx.drawImage(res.path, 0, 0, windW, windH - 90);
+        that.drawMini(ctx, windW, windH);
+      }
+    });
+  },
+  drawMini: function (ctx, windW, windH) {
+    var that = this;
+    wx.getImageInfo({
+      src: that.data.miniImg,
+      success: function (res) {
+        ctx.drawImage(res.path, windW - 85, windH - 85, 80, 80);
+        that.drawIceFish(ctx, windW, windH);
+      }
+    });
+  },
+  drawIceFish: function (ctx, windW, windH) {
+    var that = this;
+    wx.getImageInfo({
+      src: that.data.icefishImg,
+      success: function (res) {
+        ctx.drawImage(res.path, 10, windH - 70, 60, 60);
+        ctx.restore();
+        //下方二维码及图标
+        ctx.setTextAlign('left');
+        ctx.setFontSize(14);
+        ctx.fillText('冰鱼运动', 80, windH - 40);
+        ctx.setFontSize(10);
+        ctx.fillText('长按识别二维码进入活动', 80, windH - 20);
+        //提示信息
+        ctx.setTextAlign('left');
+        ctx.setFillStyle('white')
+        ctx.setFontSize(24);
+        ctx.fillText('我已在冰鱼运动累计打卡' + that.data.days + '天', 10, 60);
+        ctx.setFontSize(12);
+        ctx.fillText('累计' + that.data.runData + '步', 10, 80);
+        //时间
+        var nowDate = new Date();
+        var year = nowDate.getFullYear();
+        var month = nowDate.getMonth() + 1;
+        var days = nowDate.getDate();
+        //时间 日
+        ctx.setTextAlign('left');
+        ctx.setFontSize(66);
+        ctx.fillText(days, 20, windH - 110);
+        ctx.setFontSize(24);
+        ctx.fillText(year, 100, windH - 135);
+        ctx.setFontSize(24);
+        ctx.fillText(month, 100, windH - 110);
+
+        ctx.draw();
+        wx.hideLoading();
+      }
+    });
   },
   onClick:function () {
       wx.canvasToTempFilePath({
