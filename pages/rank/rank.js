@@ -1,6 +1,8 @@
 // pages/rank/rank.js
 const util = require('../../utils/util.js');
 const api = require('../../config/api.js');
+var sliderWidth = 82; // 需要设置slider的宽度，用于计算中间位置
+
 Page({
 
   /**
@@ -10,8 +12,8 @@ Page({
     nowRanks:'',
     yesterdayRanks:'',
     allRanks: '',
-    tabs: ["总排行榜", "昨日排行", "今日排行"],
-    activeIndex: 1,
+    tabs: ["步数排行", "冰块排行", "今日排行"],
+    activeIndex: 0,
     sliderOffset: 0,
     sliderLeft: 0
   },

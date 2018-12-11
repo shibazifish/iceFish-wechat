@@ -1,4 +1,6 @@
 /* pages/rank/rank.wxss */
+page,
+.page,
 .page__bd{
     height: 100%;
 }
@@ -9,10 +11,21 @@
     padding-top: 60px;
     text-align: center;
 }
-.img {
+.weui-grid__icon {
   margin-top: 12rpx;
   margin-right: 12rpx;
   float: left;
-  width: 140rpx;
-  height: 140rpx;
+  width: 70rpx;
+  height: 70rpx;
+}
+.weui-grid__label{
+  float: left;
+}
+.weui-block{
+  width: 90vw;
+  margin-left: 5vw;
+}
+.weui-flex__item .placeholder{
+  text-align: center;
+  width: 100%;
 }

@@ -1,5 +1,5 @@
-const ApiRootUrl = 'http://127.0.0.1:8082/icefish/wechat/';
-// const ApiRootUrl = 'https://www.taotieshop.club/icefish/wechat/';
+// const ApiRootUrl = 'http://127.0.0.1:8082/icefish/wechat/';
+const ApiRootUrl = 'https://www.taotieshop.club/icefish/wechat/';
 
 module.exports = {
   GoodsInfoUrl:ApiRootUrl+'prize/info',//奖品信息
