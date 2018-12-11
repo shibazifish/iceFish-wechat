@@ -2,6 +2,7 @@
 const util = require('../../utils/util.js');
 const api = require('../../config/api.js');
 const user = require('../../services/user.js');
+const comm = require('../../comm.js');
 var app = getApp();
 
 Page({
@@ -91,11 +92,13 @@ Page({
               }
             })
           }else{
-            wx.hideLoading();
-            wx.showToast({
-              title: '打卡失败！',
-            })
-            util.login();
+            comm.login();
+            setTimeout(function () {
+              wx.hideLoading();
+              wx.showToast({
+                title: '打卡失败！',
+              })
+            }, 4000);
           }
           console.log(res)
         });

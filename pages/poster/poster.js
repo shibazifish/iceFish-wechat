@@ -87,7 +87,7 @@ Page({
         var days = nowDate.getDate();
         var monthArry = ["JAN.", "FEB.", "MAR.", "APR.", "MAY.", "JUN.", "JUL.", "AUG.", "SEPT.", "OCT.", "NOV.","DEC."];
         //时间 日
-        ctx.setFillStyle('black');
+        // ctx.setFillStyle('black');
         ctx.setTextAlign('left');
         ctx.setFontSize(66);
         ctx.fillText(days, 20, windH - 110);
