@@ -17,7 +17,10 @@ Page({
     iceData:0,
     clockInfo:'',
     wechatUser: '',
-    posterColor:'',
+    posterColor: '',
+    posterTimeColor: '',
+    posterDataColor: '',
+    posterInfoColor: '',
   },
 
   /**
@@ -47,11 +50,17 @@ Page({
         that.setData({
           clockInfo: util.formatJsonTime(res.data.clock,'create_time'),
           wechatUser: res.data.wechatUser,
-          posterClolr:res.data.posterClolr.para_value,
+          posterColor: res.data.colorMap.POSTER_COLOR,
+          posterTimeColor: res.data.colorMap.POSTER_TIME_COLOR,
+          posterDataColor: res.data.colorMap.POSTER_DATA_COLOR,
+          posterInfoColor: res.data.colorMap.POSTER_INFO_COLOR,
         });
         if(isGoto){//是否跳转海报页面
           wx.navigateTo({
-            url: '/pages/poster/poster?runData=' + that.data.wechatUser.countRunData + '&days=' + that.data.clockInfo.length + '&posterClolr=' + that.data.posterClolr,
+            url: '/pages/poster/poster?runData=' + that.data.wechatUser.countRunData 
+              + '&days=' + that.data.clockInfo.length + '&posterColor=' + that.data.posterColor
+              + '&posterTimeColor=' + that.data.posterTimeColor + '&posterDataColor=' + that.data.posterDataColor
+              + '&posterInfoColor=' + that.data.posterInfoColor,
           })
         }
       }
