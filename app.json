@@ -5,6 +5,8 @@
     "pages/activityDetail/activityDetail",
     "pages/clock/clock",
     "pages/rank/rank",
+    "pages/games/games",
+    "pages/2048/2048",
     "pages/poster/poster"
   ],
   "window": {
@@ -31,6 +33,12 @@
         "iconPath": "static/images/ic_menu_sort_nor.png",
         "selectedIconPath": "static/images/ic_menu_sort_pressed.png",
         "text": "运动打卡"
+      },
+      {
+        "pagePath": "pages/games/games",
+        "iconPath": "static/images/ic_menu_game_nor.png",
+        "selectedIconPath": "static/images/ic_menu_game_pressed.png",
+        "text": "小游戏"
       }
     ]
   },
