@@ -5,6 +5,7 @@
             <text class="name">{{prize.goods_name}}</text>
             <text class="desc">{{prize.goods_desc}}</text>
             <text class="desc">{{prize.goods_detail}}</text>
+            <text class="desc">库存：{{prize.goods_num}}</text>
             <text class="price">￥:{{prize.goods_price}}元 {{prize.goods_ice}}块</text>
           </view>
       </view>
@@ -13,4 +14,16 @@
         <button bindtap="onEnter">立即兑换</button>
       </view>
       <view>{{exchangeResult}}</view>
+       <view class="b">
+        <view class="item" wx:for="{{exchangeRecord}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.record_id}}">
+            <image class="img" src="{{item.avatarUrl}}" background-size="cover"></image>
+            <view class="right">
+              <view class="text">
+                <text class="name">{{item.nickName}}</text>
+                <text class="price">{{item.goods_name}}</text>
+                <text class="desc">{{item.create_date}}</text>
+              </view>
+            </view>
+        </view>
+      </view>
 </view>

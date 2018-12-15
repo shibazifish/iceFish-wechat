@@ -9,7 +9,10 @@
           <view>累计步数：{{wechatUser.countRunData}}</view>
           <view>可用冰块：{{wechatUser.iceData}}</view>
        </view>
-       <button bindtap="bindGetRunData">步数打卡</button>
+       <view class="button-sp-area">
+        <button class="weui-btn mini-btn" bindtap="bindGetRunData" type="default" size='mini'>步数打卡</button>
+        <button class="weui-btn mini-btn" open-type="share" bindtap="onShareAppMessage" type="primary" size="mini">邀请好友得冰块</button>
+      </view>
       <view class='c'>
         <view class="item" wx:for="{{clockInfo}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.clock_id}}">
         

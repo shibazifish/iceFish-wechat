@@ -20,10 +20,6 @@ App({
             }, 'GET').then(function (res) {
               if (res.errno === 0) {
                 that.globalData.nickname = res.data.nickName;
-              } else {
-                wx.navigateTo({
-                  url: '/pages/grant/grant'
-                })
               }
             });
           }

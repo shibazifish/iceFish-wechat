@@ -27,13 +27,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    setTimeout(function () {
-      if (app.globalData.nickname == '') {
-        wx.navigateTo({
-          url: '/pages/grant/grant'
-        })
-      }
-    }, 2000);
+    // setTimeout(function () {
+    //   if (app.globalData.nickname == '') {
+    //     wx.navigateTo({
+    //       url: '/pages/grant/grant'
+    //     })
+    //   }
+    // }, 4000);
     this.getClockInfo(false);
   },
   /**
@@ -182,7 +182,19 @@ onSaveRunData:function(){
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (ops) {
+    return {
+      title: '每天走路就能兑礼品啦！',
+      imageUrl: 'https://www.taotieshop.club/icefish/poster/taotie.jpg',//图片地址
+      path: '/pages/activity/activity?inviter='+app.globalData.openid,// 用户点击首先进入的当前页面
+      success: function (res) {
+        // 转发成功
+        console.log("转发成功:");
+      },
+      fail: function (res) {
+        // 转发失败
+        console.log("转发失败:");
+      }
+    }
   }
 })

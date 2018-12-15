@@ -17,6 +17,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
+    if (options.inviter != undefined) {
+      that.setData({
+        inviter: options.inviter,
+      })
+      console.log("inviter:" + options.inviter);
+    }
     wx.showLoading({
       title: '数据加载中...',
     })
@@ -24,7 +31,7 @@ Page({
     setTimeout(function () {
       if (app.globalData.nickname == '') {
         wx.navigateTo({
-          url: '/pages/grant/grant'
+          url: '/pages/grant/grant?inviter='+that.data.inviter,
         })
       }
     }, 4000);
@@ -54,26 +61,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
-  },
-  onShareAppMessage: function (ops) {
-    if (ops.from === 'button') {
-      // 来自页面内转发按钮
-      console.log(ops.target)
-    }
-    return {
-      title: '每天走路就能兑礼品啦！',
-      imageUrl: 'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1543732178&di=e8251a5c7078d24102712431ff087aa0&src=http://imgsrc.baidu.com/imgad/pic/item/8cb1cb13495409239d3f01f19858d109b2de49ee.jpg',//图片地址
-      path: '/pages/activity/activity?inviter=app.globalData.openid',// 用户点击首先进入的当前页面
-      success: function (res) {
-        // 转发成功
-        console.log("转发成功:");
-      },
-      fail: function (res) {
-        // 转发失败
-        console.log("转发失败:");
-      }
-    }
 
   },
   /**
@@ -108,6 +95,18 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: '每天走路就能兑礼品啦！',
+      imageUrl: 'https://www.taotieshop.club/icefish/poster/taotie.jpg',//图片地址
+      path: '/pages/activity/activity?inviter=' + app.globalData.openid,// 用户点击首先进入的当前页面
+      success: function (res) {
+        // 转发成功
+        console.log("转发成功:");
+      },
+      fail: function (res) {
+        // 转发失败
+        console.log("转发失败:");
+      }
+    }
   }
 })

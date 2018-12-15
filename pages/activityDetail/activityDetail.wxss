@@ -690,3 +690,95 @@
   text-align: right;
   padding: 0 30rpx;
 }
+
+.a-section {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  background: #fff;
+  color: #333;
+  margin-top: 20rpx;
+}
+
+.a-section .h {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  height: 130rpx;
+}
+
+.a-section .h .txt {
+  padding-right: 30rpx;
+  background-size: 16.656rpx 27rpx;
+  display: inline-block;
+  height: 36rpx;
+  font-size: 33rpx;
+  line-height: 36rpx;
+}
+
+.a-popular {
+  width: 100%;
+  height: calc(100vh - 20rpx);
+  overflow: hidden;
+}
+.b {
+  height: calc(100% - 140rpx);
+  overflow: scroll;
+}
+.b .item {
+  border-top: 1px solid #d9d9d9;
+  margin: 0 5%;
+  height: 274rpx;
+  width: 90%;
+}
+
+.b .img {
+  margin-top: 12rpx;
+  margin-right: 12rpx;
+  float: left;
+  width: 120rpx;
+  height: 120rpx;
+}
+
+ .b .right {
+  float: left;
+  height: 234rpx;
+  width: calc( 90% - 240rpx );
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+ .b .text {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  height: 244rpx;
+  width: 456rpx;
+}
+
+ .b .name {
+  width: 456rpx;
+  display: block;
+  color: #333;
+  line-height: 50rpx;
+  font-size: 30rpx;
+}
+
+ .b .desc {
+  width: 456rpx;
+  display: block;
+  color: #999;
+  line-height: 50rpx;
+  font-size: 25rpx;
+}
+
+.b .price {
+  width: 456rpx;
+  display: block;
+  color: #b4282d;
+  line-height: 50rpx;
+  font-size: 33rpx;
+}
