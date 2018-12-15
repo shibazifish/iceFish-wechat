@@ -64,7 +64,7 @@ Page({
     return {
       title: '每天走路就能兑礼品啦！',
       imageUrl: 'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1543732178&di=e8251a5c7078d24102712431ff087aa0&src=http://imgsrc.baidu.com/imgad/pic/item/8cb1cb13495409239d3f01f19858d109b2de49ee.jpg',//图片地址
-      path: '/pages/activity/activity?inviter=app.globalData.openid',// 用户点击首先进入的当前页面
+      path: '/pages/activity/activity?inviter='+app.globalData.openid,// 用户点击首先进入的当前页面
       success: function (res) {
         // 转发成功
         console.log("转发成功:");

@@ -1,4 +1,5 @@
 {
   "navigationBarTitleText": "游戏列表",
-  "disableScroll": true
+  "disableScroll": true,
+  "enablePullDownRefresh": false
 }

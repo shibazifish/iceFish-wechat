@@ -33,6 +33,7 @@
   padding: 15px 25px;
   font-size: 25px;
   height: 55px;
+  width: 160rpx;
   line-height: 47px;
   font-weight: bold;
   border-radius: 3px;
@@ -408,12 +409,14 @@ hr {
 .restart-button {
   background: #8f7a66;
   border-radius: 3px;
-  margin: 0 20px;
+  padding: 0 20px;
   text-decoration: none;
   color: #f9f6f2;
   height: 40px;
   line-height: 42px;
+  display: block;
   text-align: center;
+  float: left;
 }
 .game-explanation {
   margin-top: 50px;
@@ -449,15 +452,15 @@ hr {
     line-height: 1.65;
   }
   .restart-button {
-    width: 40%;
+    width: 42%;
     padding: 0;
     display: block;
     box-sizing: border-box;
     margin-top: 2px;
   }
   .game-container {
-    margin-left: 13vw;
     margin-top: 17px;
+    margin-left: 13vw;
     position: relative;
     padding: 10px;
     cursor: default;
@@ -541,8 +544,8 @@ hr {
     clear: both;
   }
   .grid-cell {
-    width: 15vw;
-    height: 15vw;
+    width: 57.5px;
+    height: 57.5px;
     margin-right: 10px;
     float: left;
     border-radius: 3px;
