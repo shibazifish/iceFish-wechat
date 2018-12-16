@@ -1,47 +1,24 @@
-<!--pages/rank/rank.wxml-->
-<view class="page">
-    <view class="page__bd">
-        <view class="weui-tab">
-            <view class="weui-navbar">
-                <block wx:for="{{tabs}}" wx:key="*this">
-                    <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
-                        <view class="weui-navbar__title">{{item}}</view>
-                    </view>
-                </block>
-                <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
-            </view>
-            <view class="weui-tab__panel">
-                <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
-                  <view class='a'>
-                    <view class="weui-flex" wx:for="{{allRanks}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.openId}}">
-                        <view><view class="placeholder">{{index+1}}</view></view>
-                        <view><view class="placeholder"><image class="weui-grid__icon" src="{{item.avatarUrl}}" /></view></view>
-                        <view><view class="placeholder">{{item.nickName}}</view></view>
-                        <view class="weui-flex__item"><view class="placeholder">{{item.run_data}}</view></view>
-                    </view>
-                  </view>
-                </view>
-                <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
-                  <view class='b'>
-                    <view class="weui-flex" wx:for="{{allRanks}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.openId}}">
-                        <view><view class="placeholder">{{index+1}}</view></view>
-                        <view><view class="placeholder"><image class="weui-grid__icon" src="{{item.avatarUrl}}" /></view></view>
-                        <view><view class="placeholder">{{item.nickName}}</view></view>
-                        <view class="weui-flex__item"><view class="placeholder">{{item.ice_data}}</view></view>
-                    </view>
-                  </view>
-                </view>
-                <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
-                  <view class='c'>
-                    <view class="weui-flex" wx:for="{{nowRanks}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.openId}}">
-                        <view><view class="placeholder">{{index+1}}</view></view>
-                        <view><view class="placeholder"><image class="weui-grid__icon" src="{{item.avatarUrl}}" /></view></view>
-                        <view><view class="placeholder">{{item.nickName}}</view></view>
-                        <view class="weui-flex__item"><view class="placeholder">{{item.run_data}}</view></view>
-                    </view>
-                  </view>
-                </view>
-            </view>
-        </view>
+<swiper class="nav" display-multiple-items='3'>
+  <swiper-item bindtap="navList" data-nav="1">
+    <view class="{{nav === 1 ? 'active' : ''}}">今日排行</view>
+  </swiper-item>
+  <swiper-item bindtap="navList" data-nav="2">
+    <view class="{{nav === 2 ? 'active' : ''}}">昨日榜单</view>
+  </swiper-item>
+  <swiper-item bindtap="navList" data-nav="3">
+    <view class="{{nav === 3 ? 'active' : ''}}">总排行</view>
+  </swiper-item>
+  </swiper>
+<scroll-view
+scroll-y="true"
+class="content">
+  <view  class="content-list" wx:for="{{list}}">
+    <view class="name">{{item.nickName}}</view>
+    <text>{{item.run_data}}步</text>
+    <image class="avatar" src="{{item.avatarUrl}}"></image>
+    <view class="charge">
+      <image src="../../static/images/ice.png" class="ice-fish"/>
+      <view class="price">{{item.ice_data}}</view>
     </view>
-</view>
+  </view>
+</scroll-view>

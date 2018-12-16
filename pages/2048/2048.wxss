@@ -21,10 +21,16 @@
   display: block;
   float: left;
 }
-
+button{
+  width: 93vw;
+}
 .scores-container {
-  float: right;
   text-align: right;
+  width: 100vw;
+}
+.scores-container view{
+  width: 44vw;
+  margin-right: 3vw;
 }
 .score-container, .best-container {
   position: relative;
@@ -443,20 +449,14 @@ hr {
     min-width: 40px;
   }
   .heading {
-    margin-bottom: 10px;
+    margin-top: 25px;
+    margin-bottom: 25px;
   }
   .game-intro {
     width: 55%;
     display: block;
     box-sizing: border-box;
     line-height: 1.65;
-  }
-  .restart-button {
-    width: 42%;
-    padding: 0;
-    display: block;
-    box-sizing: border-box;
-    margin-top: 2px;
   }
   .game-container {
     margin-top: 17px;

@@ -1,8 +1,18 @@
 /**index.wxss**/
-.more{
+.container{
   /*浅灰色*/
-	color: #aaa;
-	font-size: 14px;
-	position:fixed;
-	bottom: 20px;
+  overflow: scroll;
+}
+.usermotto view{
+  height: 45vw;
+  width: 45vw;
+  margin-left: 3vw;
+  margin-top: 3vw;
+  float: left;
+  font-size: 48rpx;
+  color: white;
+  text-align: center;
+  line-height: 45vw;
+  border-radius: 5vw;
+  font: bold;
 }

@@ -5,11 +5,11 @@
         加载中...
     </loading>
     <view class="heading">
-      	<text class="restart-button" bindtap="restart">新游戏</text>
       	<view class="scores-container">
-        	<view class="best-container">{{score}}</view>
+        	<view class="score-container">{{score}}</view>
       		<view class="best-container">{{highscore}}</view>
       	</view>
+        <button class="weui-btn" bindtap="restart" type="primary">新游戏</button>
     </view>
 
     <view class="game-container">

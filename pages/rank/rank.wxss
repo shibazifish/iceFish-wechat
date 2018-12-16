@@ -1,31 +1,87 @@
-/* pages/rank/rank.wxss */
-page,
-.page,
-.page__bd{
-    height: 100%;
+
+/*
+  导航栏部分
+*/
+.nav {
+  width: 700rpx;
+  height: 80rpx;
+  margin: 20rpx auto;
 }
-.page__bd{
-    padding-bottom: 0;
-}
-.weui-tab__content{
-    padding-top: 60px;
-    text-align: center;
-}
-.weui-grid__icon {
-  margin-top: 12rpx;
-  margin-right: 12rpx;
-  float: left;
-  width: 70rpx;
-  height: 70rpx;
-}
-.weui-grid__label{
-  float: left;
-}
-.weui-block{
-  width: 90vw;
-  margin-left: 5vw;
-}
-.weui-flex__item .placeholder{
+.nav view {
+  font-size: 24rpx;
   text-align: center;
-  width: 100%;
+  line-height: 75rpx;
+  width: 130rpx;
+  height: 75rpx;
+  margin: 10rpx 40rpx;
+}
+.active {
+  color: black;
+  border-bottom: 4px solid #69d8e0;
+}
+
+/*
+  内容栏部分
+*/
+.content {
+  height: calc( 100vh - 130rpx );
+  width: 600rpx;
+  margin: 0 auto;
+}
+.content-list {
+  width: 600rpx;
+  height: 170rpx;
+  margin: 30rpx 0;
+  background-image: linear-gradient(215deg, #2CD8D5 0%, #C5C1FF 56%, #2CD8D5 100%);
+  box-shadow: 5rpx 5rpx 30rpx gainsboro;
+  position: relative;
+}
+.name {
+  height: 70rpx;
+  width: auto;
+  position: absolute;
+  top: 10rpx;
+  left: 200rpx;
+  overflow: hidden;
+}
+.content-list text {
+  width:200rpx;
+  color: white;
+  text-align: right;
+  font-size: 32rpx;
+  font-weight: 600;
+  position: absolute;
+  bottom: 15rpx;
+  right: 250rpx;
+  letter-spacing: 3rpx;
+}
+.content-list .avatar {
+  width: 170rpx;
+  height: 170rpx;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.charge {
+  position: absolute;
+  top: 100rpx;
+  right: 50rpx;
+  margin: auto;
+  height: 70rpx;
+  width: 200rpx;
+}
+.ice-fish {
+  height: 50rpx;
+  width: 50rpx;
+  position: absolute;
+  right: 0;
+}
+.price {
+  color: #6d9edf;
+  line-height: 50rpx;
+  font-size: 42rpx;
+  width: auto;
+  height: 50rpx;
+  position: absolute;
+  right: 55rpx;
 }

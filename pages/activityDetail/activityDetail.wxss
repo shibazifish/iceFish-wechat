@@ -728,13 +728,13 @@
 }
 .b .item {
   border-top: 1px solid #d9d9d9;
-  margin: 0 5%;
-  height: 274rpx;
-  width: 90%;
+  margin: 0 10%;
+  height: 170rpx;
+  width: 80%;
 }
 
 .b .img {
-  margin-top: 12rpx;
+  margin-top: 40rpx;
   margin-right: 12rpx;
   float: left;
   width: 120rpx;
@@ -743,10 +743,10 @@
 
  .b .right {
   float: left;
-  height: 234rpx;
   width: calc( 90% - 240rpx );
   display: flex;
   flex-flow: row nowrap;
+  margin-top: 40rpx;
 }
 
  .b .text {
@@ -755,7 +755,7 @@
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
-  height: 244rpx;
+  height: 120rpx;
   width: 456rpx;
 }
 

@@ -130,7 +130,25 @@ var config = {
 
         }
 
+    },
+    /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+    var that = this;
+    return {
+      title: that.data.highscore+'分，敢接受我的挑战吗？',
+      path: '/pages/activity/activity?inviter=' + app.globalData.openid,// 用户点击首先进入的当前页面
+      success: function (res) {
+        // 转发成功
+        console.log("转发成功:");
+      },
+      fail: function (res) {
+        // 转发失败
+        console.log("转发失败:");
+      }
     }
+  }
 };
 
 Page(config);
