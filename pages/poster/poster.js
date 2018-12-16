@@ -12,7 +12,10 @@ Page({
     runData: "99999",
     clockInfo:'',
     wechatUser:'',
-    posterClolr:'#ECC542',
+    posterColor: '#ECC542',
+    posterTimeColor:'#FFFFFF',
+    posterDataColor: '#FFFFFF',
+    posterInfoColor: '#000000',
   },
 
   /**
@@ -26,7 +29,10 @@ Page({
     this.setData({
       days: options.days,
       runData: options.runData,
-      posterClolr: options.posterClolr,
+      posterColor: options.posterColor,
+      posterTimeColor: options.posterTimeColor,
+      posterDataColor: options.posterDataColor,
+      posterInfoColor: options.posterInfoColor,
     });
   },
 
@@ -40,7 +46,7 @@ Page({
     var windH = wx.getSystemInfoSync().windowHeight;
     var windW = wx.getSystemInfoSync().windowWidth;
     ctx.save();
-    ctx.setFillStyle(that.data.posterClolr);
+    ctx.setFillStyle(that.data.posterColor);
     ctx.fillRect(0, 0, windW, windH);
     wx.getImageInfo({
       src: that.data.backImg,
@@ -68,14 +74,15 @@ Page({
         ctx.drawImage(res.path, 10, windH - 70, 60, 60);
         ctx.restore();
         //下方二维码及图标
-        ctx.setTextAlign('left');
+        ctx.setTextAlign('left'); 
+        ctx.setFillStyle(that.data.posterInfoColor);
         ctx.setFontSize(14);
         ctx.fillText('冰鱼运动', 80, windH - 40);
         ctx.setFontSize(10);
         ctx.fillText('长按识别二维码进入活动', 80, windH - 20);
         //提示信息
         ctx.setTextAlign('left');
-        ctx.setFillStyle('white');
+        ctx.setFillStyle(that.data.posterDataColor);
         ctx.setFontSize(24);
         ctx.fillText('我已在冰鱼运动累计打卡' + that.data.days + '天', 10, 60);
         ctx.setFontSize(12);
@@ -87,7 +94,7 @@ Page({
         var days = nowDate.getDate();
         var monthArry = ["JAN.", "FEB.", "MAR.", "APR.", "MAY.", "JUN.", "JUL.", "AUG.", "SEPT.", "OCT.", "NOV.","DEC."];
         //时间 日
-        ctx.setFillStyle('black');
+        ctx.setFillStyle(that.data.posterTimeColor);
         ctx.setTextAlign('left');
         ctx.setFontSize(66);
         ctx.fillText(days, 20, windH - 110);
@@ -159,6 +166,18 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: '每天走路就能兑礼品啦！',
+      imageUrl: 'https://www.taotieshop.club/icefish/poster/taotie.jpg',//图片地址
+      path: '/pages/activity/activity?inviter=' + app.globalData.openid,// 用户点击首先进入的当前页面
+      success: function (res) {
+        // 转发成功
+        console.log("转发成功:");
+      },
+      fail: function (res) {
+        // 转发失败
+        console.log("转发失败:");
+      }
+    }
   }
 })

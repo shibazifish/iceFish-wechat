@@ -12,6 +12,7 @@ Page({
     id:0,
     prize:{},
     exchangeResult:'',
+    exchangeRecord: '',
   },
 
   /**
@@ -25,8 +26,11 @@ Page({
     });
     var that = this;
     this.getPrizeDetail();
+    this.getExchangeInfo();
   },
-
+  /**
+   * 获取奖品明细
+   */
   getPrizeDetail: function () {
     let that = this;
     util.request(api.GoodsDetailUrl, { id: that.data.id }).then(function (res) {
@@ -36,7 +40,19 @@ Page({
         });
       }
     });
-
+  },
+  /**
+   * 获取兑奖历史记录
+   */
+  getExchangeInfo: function () {
+    let that = this;
+    util.request(api.ExchangeInfoUrl, { prizeId: that.data.id }).then(function (res) {
+      if (res.errno === 0) {
+        that.setData({
+          exchangeRecord: util.formatJsonTime(res.data, 'create_date'),
+        });
+      }
+    });
   },
   onEnter() {
     let that = this;

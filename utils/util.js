@@ -1,5 +1,4 @@
 var api = require('../config/api.js');
-var app = getApp();
 
 function formatTime(date) {
   var year = date.getFullYear()
@@ -171,6 +170,13 @@ function showErrorToast(msg) {
   })
 }
 
+let isEmptyObject = (obj) => {
+  for (let i in obj) {
+    return false
+  }
+  return true
+}
+
 module.exports = {
   formatTime,
   request,
@@ -180,6 +186,7 @@ module.exports = {
   login,
   getUserInfo,
   formatJsonTime,
+  isEmptyObject,
 }
 
 

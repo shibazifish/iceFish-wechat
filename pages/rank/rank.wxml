@@ -1,0 +1,24 @@
+<swiper class="nav" display-multiple-items='3'>
+  <swiper-item bindtap="navList" data-nav="1">
+    <view class="{{nav === 1 ? 'active' : ''}}">今日排行</view>
+  </swiper-item>
+  <swiper-item bindtap="navList" data-nav="2">
+    <view class="{{nav === 2 ? 'active' : ''}}">昨日榜单</view>
+  </swiper-item>
+  <swiper-item bindtap="navList" data-nav="3">
+    <view class="{{nav === 3 ? 'active' : ''}}">总排行</view>
+  </swiper-item>
+  </swiper>
+<scroll-view
+scroll-y="true"
+class="content">
+  <view  class="content-list" wx:for="{{list}}">
+    <view class="name">{{item.nickName}}</view>
+    <text>{{item.run_data}}步</text>
+    <image class="avatar" src="{{item.avatarUrl}}"></image>
+    <view class="charge">
+      <image src="../../static/images/ice.png" class="ice-fish"/>
+      <view class="price">{{item.ice_data}}</view>
+    </view>
+  </view>
+</scroll-view>

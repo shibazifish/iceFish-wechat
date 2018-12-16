@@ -11,4 +11,6 @@ module.exports = {
   ClockAddUrl: ApiRootUrl + 'clock/add',//保存跑步信息
   ClockInfoUrl: ApiRootUrl + 'clock/info',//获取打卡信息
   UserInfoUrl: ApiRootUrl + 'user/get',//获取用户信息
+  RankInfoUrl: ApiRootUrl + 'user/rank',//获取排行榜信息
+  ExchangeInfoUrl: ApiRootUrl + 'exchange/get',//获取兑奖记录
 };

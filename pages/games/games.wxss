@@ -1,0 +1,18 @@
+/**index.wxss**/
+.container{
+  /*浅灰色*/
+  overflow: scroll;
+}
+.usermotto view{
+  height: 45vw;
+  width: 45vw;
+  margin-left: 3vw;
+  margin-top: 3vw;
+  float: left;
+  font-size: 48rpx;
+  color: white;
+  text-align: center;
+  line-height: 45vw;
+  border-radius: 5vw;
+  font: bold;
+}

@@ -62,7 +62,11 @@ button{
   line-height: 60rpx;
 }
 .c{
-  height: calc(100vh - 260rpx);
+  height: calc(100vh - 290rpx);
   overflow: scroll;
   margin-top: 10rpx;
+}
+.mini-btn{
+  width: 46vw;
+  margin-left: 2vw;
 }

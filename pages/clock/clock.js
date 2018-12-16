@@ -2,6 +2,7 @@
 const util = require('../../utils/util.js');
 const api = require('../../config/api.js');
 const user = require('../../services/user.js');
+const comm = require('../../comm.js');
 var app = getApp();
 
 Page({
@@ -16,20 +17,23 @@ Page({
     iceData:0,
     clockInfo:'',
     wechatUser: '',
-    posterColor:'',
+    posterColor: '',
+    posterTimeColor: '',
+    posterDataColor: '',
+    posterInfoColor: '',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    setTimeout(function () {
-      if (app.globalData.nickname == '') {
-        wx.navigateTo({
-          url: '/pages/grant/grant'
-        })
-      }
-    }, 2000);
+    // setTimeout(function () {
+    //   if (app.globalData.nickname == '') {
+    //     wx.navigateTo({
+    //       url: '/pages/grant/grant'
+    //     })
+    //   }
+    // }, 4000);
     this.getClockInfo(false);
   },
   /**
@@ -46,11 +50,17 @@ Page({
         that.setData({
           clockInfo: util.formatJsonTime(res.data.clock,'create_time'),
           wechatUser: res.data.wechatUser,
-          posterClolr:res.data.posterClolr.para_value,
+          posterColor: res.data.colorMap.POSTER_COLOR,
+          posterTimeColor: res.data.colorMap.POSTER_TIME_COLOR,
+          posterDataColor: res.data.colorMap.POSTER_DATA_COLOR,
+          posterInfoColor: res.data.colorMap.POSTER_INFO_COLOR,
         });
         if(isGoto){//是否跳转海报页面
           wx.navigateTo({
-            url: '/pages/poster/poster?runData=' + that.data.wechatUser.countRunData + '&days=' + that.data.clockInfo.length + '&posterClolr=' + that.data.posterClolr,
+            url: '/pages/poster/poster?runData=' + that.data.wechatUser.countRunData 
+              + '&days=' + that.data.clockInfo.length + '&posterColor=' + that.data.posterColor
+              + '&posterTimeColor=' + that.data.posterTimeColor + '&posterDataColor=' + that.data.posterDataColor
+              + '&posterInfoColor=' + that.data.posterInfoColor,
           })
         }
       }
@@ -91,11 +101,13 @@ Page({
               }
             })
           }else{
-            wx.hideLoading();
-            wx.showToast({
-              title: '打卡失败！',
-            })
-            util.login();
+            comm.login();
+            setTimeout(function () {
+              wx.hideLoading();
+              wx.showToast({
+                title: '打卡失败！',
+              })
+            }, 4000);
           }
           console.log(res)
         });
@@ -170,7 +182,19 @@ onSaveRunData:function(){
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (ops) {
+    return {
+      title: '每天走路就能兑礼品啦！',
+      imageUrl: 'https://www.taotieshop.club/icefish/poster/taotie.jpg',//图片地址
+      path: '/pages/activity/activity?inviter='+app.globalData.openid,// 用户点击首先进入的当前页面
+      success: function (res) {
+        // 转发成功
+        console.log("转发成功:");
+      },
+      fail: function (res) {
+        // 转发失败
+        console.log("转发失败:");
+      }
+    }
   }
 })

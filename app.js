@@ -20,10 +20,6 @@ App({
             }, 'GET').then(function (res) {
               if (res.errno === 0) {
                 that.globalData.nickname = res.data.nickName;
-              } else {
-                wx.navigateTo({
-                  url: '/pages/grant/grant'
-                })
               }
             });
           }
@@ -31,9 +27,28 @@ App({
         });
       }
     });
+    wx.cloud.init({
+      env: 'dev-icefh',
+      traceUser: true,
+    })
+    wx.getSystemInfo({
+      success: (res) => {
+        this.globalData.systeminfo = res
+        this.globalData.isIPhoneX = /iphonex/gi.test(res.model.replace(/\s+/, ''))
+      },
+    })
   },
   
   globalData: {
+    // 是否保持常亮，离开小程序失效
+    keepscreenon: false,
+    systeminfo: {},
+    isIPhoneX: false,
+    weatherIconUrl: 'https://cdn.heweather.com/cond_icon/',
+    requestUrl: {
+      weather: 'https://free-api.heweather.com/s6/weather',
+      hourly: 'https://free-api.heweather.com/s6/weather/hourly',
+    },
     userInfo: {
       nickname: 'Hi,游客',
       username: '点击去登录',
@@ -44,5 +59,6 @@ App({
     code: '',
     nickname: '',
     session_key: '',
+    key:'icefish',
   }
 })

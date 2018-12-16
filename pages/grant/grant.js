@@ -18,32 +18,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // options.inviter = '112233';
+    let that = this;
     // 页面初始化 options为页面跳转所带来的参数
-    // if (app.globalData.openid != ''){
-    //   wx.showLoading({
-    //     title: '信息获取中...',
-    //   });
-    //   util.request(api.UserInfoUrl, {
-    //     openId: app.globalData.openid
-    //   }, 'GET').then(function (res) {
-    //     wx.hideLoading();
-    //     if (res.errno === 0) {
-    //       app.globalData.nickname = res.data.nickName;
-    //       wx.switchTab({
-    //         url: '../activity/activity',
-    //       })
-    //     } else {
-    //       wx.showToast({
-    //         title: '信息获取失败！',
-    //       })
-    //     }
-    //   });
-    // } else {
-    //   wx.showLoading({
-    //     title: '登陆中...',
-    //   });
-    //   setTimeout(function(){wx.hideLoading()},1000);
-    // }
+    if (options.inviter != undefined) {
+      that.setData({
+        inviter: options.inviter,
+      })
+      console.log("inviter1:" + options.inviter);
+    }
   },
 
   bindGetUserInfo(e) {
