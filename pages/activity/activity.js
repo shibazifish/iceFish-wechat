@@ -9,8 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    goodsInfo:[],
-    inviter:'',
+    goodsInfo: [],
+    inviter: '',
     notice: '每周三补充库存',
     marqueePace: 1,//滚动速度
     marqueeDistance: 0,//初始滚动距离
@@ -40,7 +40,7 @@ Page({
     setTimeout(function () {
       if (app.globalData.nickname == '') {
         wx.navigateTo({
-          url: '/pages/grant/grant?inviter='+that.data.inviter,
+          url: '/pages/grant/grant?inviter=' + that.data.inviter,
         })
       }
     }, 4000);
@@ -48,16 +48,16 @@ Page({
   /**
    * 获取奖品信息 2018年11月27日20:11:24
    */
-  getGoodsInfo:function(){
+  getGoodsInfo: function () {
     let that = this;
     util.request(api.GoodsInfoUrl).then(function (res) {
       wx.hideLoading();
       if (res.errno === 0) {
-        if (res.data.notice == undefined){
+        if (res.data.notice == undefined) {
           that.setData({
             goodsInfo: res.data,
           });
-        }else{
+        } else {
           that.setData({
             goodsInfo: res.data.prize,
             notice: res.data.notice.para_value,
