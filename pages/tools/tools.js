@@ -1,66 +1,49 @@
-// pages/tools/tools.js
-Page({
 
-  /**
-   * 页面的初始数据
-   */
+var config = {
   data: {
-
+    disable: false,
+    toolList: [{ 'name': '圣诞帽', 'color': '#32CD32', 'page': 'hat' }
+    // { 'name': '扫雷', 'color': '#006400', 'page': 'saolei' },
+    // { 'name': '猜成语', 'color': '#000000', 'page': 'chengyu' },
+      // { 'name': '天气情况', 'color': '#CD5C5C', 'page': 'weather' }
+    ]
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onLoad: function () {
+    var that = this;
+    setTimeout(function () {
+      if (app.globalData.nickname == '') {
+        wx.navigateTo({
+          url: '/pages/grant/grant',
+        })
+      }
+    }, 4000);
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
   onReady: function () {
-
+    // 页面渲染完毕
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
-
+    // 页面展示
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
   onHide: function () {
-
+    // 页面隐藏
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
   onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+    // 页面关闭
   }
-})
+};
+
+//设置属性名"startName"到相应游戏页面的映射
+config.data.toolList.forEach(function (v) {
+  config['start' + v.page] = function () {
+
+    config.data.disable = true;
+
+    // 这里需要注意每个游戏文件夹名称需和js名称保持一致
+    wx.navigateTo({
+      url: '../' + v.page + '/' + v.page
+    })
+  }
+});
+
+Page(config);
