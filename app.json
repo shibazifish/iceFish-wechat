@@ -11,6 +11,9 @@
     "pages/saolei/saolei",
     "pages/chengyu/chengyu",
     "pages/weather/weather",
+    "pages/combine/combine",
+    "pages/hat/hat",
+    "pages/imageeditor/imageeditor",
     "pages/poster/poster"
   ],
   "window": {

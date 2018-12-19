@@ -58,7 +58,14 @@ App({
     openid:'',
     code: '',
     nickname: '',
+    avatarUrl: '',
     session_key: '',
-    key:'icefish',
+    key: 'icefish',
+    bgPic: null,
+    scale: 1,
+    rotate: 0,
+    hat_center_x: 0,
+    hat_center_x: 0,
+    currentHatId: 1
   }
 })
