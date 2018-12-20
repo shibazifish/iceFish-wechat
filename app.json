@@ -7,13 +7,13 @@
     "pages/activityDetail/activityDetail",
     "pages/clock/clock",
     "pages/rank/rank",
-    "pages/2048/2048",
     "pages/saolei/saolei",
     "pages/chengyu/chengyu",
     "pages/weather/weather",
     "pages/combine/combine",
     "pages/hat/hat",
     "pages/imageeditor/imageeditor",
+    "pages/contPage/contPage",
     "pages/poster/poster"
   ],
   "window": {
