@@ -60,7 +60,12 @@ Page({
       url: '../imageeditor/imageeditor',
     })
   },
-
+  contPage() {
+    app.globalData.bgPic = this.data.bgPic;
+    wx.navigateTo({
+      url: '../contPage/contPage',
+    })
+  },
   /**
    * 用户点击右上角分享
    */

@@ -2,10 +2,11 @@
 var config = {
   data: {
     disable: false,
-    gameList: [{ 'name': '2048', 'color':'#32CD32','page':'2048'},
+    gameList: [
       { 'name': '扫雷', 'color': '#006400', 'page': 'saolei' },
       { 'name': '猜成语', 'color': '#000000', 'page': 'chengyu' },
       // { 'name': '天气情况', 'color': '#CD5C5C', 'page': 'weather' }
+      //{ 'name': '2048', 'color': '#32CD32', 'page': '2048' },
       ]
   },
 

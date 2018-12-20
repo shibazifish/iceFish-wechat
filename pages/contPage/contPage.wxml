@@ -1,0 +1,7 @@
+<!--pages/contPage/contPage.wxml-->
+<view><canvas canvas-id="firstCanvas"  bindlongtap='onClick'>
+</canvas>
+</view>
+
+<input maxlength='1' bindinput="bindKeyInput" type='text' placeholder="输入需要添加的文字"></input>
+<text>*请将微信头像下载至本地使用，长按图片下载</text>
