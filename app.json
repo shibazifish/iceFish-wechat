@@ -7,10 +7,13 @@
     "pages/activityDetail/activityDetail",
     "pages/clock/clock",
     "pages/rank/rank",
-    "pages/2048/2048",
     "pages/saolei/saolei",
     "pages/chengyu/chengyu",
     "pages/weather/weather",
+    "pages/combine/combine",
+    "pages/hat/hat",
+    "pages/imageeditor/imageeditor",
+    "pages/contPage/contPage",
     "pages/poster/poster"
   ],
   "window": {
@@ -43,12 +46,6 @@
         "iconPath": "static/images/ic_menu_rank_nor.png",
         "selectedIconPath": "static/images/ic_menu_rank_pressed.png",
         "text": "排行榜"
-      },
-      {
-        "pagePath": "pages/games/games",
-        "iconPath": "static/images/ic_menu_game_nor.png",
-        "selectedIconPath": "static/images/ic_menu_game_pressed.png",
-        "text": "小游戏"
       },
       {
         "pagePath": "pages/tools/tools",

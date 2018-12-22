@@ -12,6 +12,7 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     openId : "",
     inviter:"",
+    back:false,
   },
 
   /**
@@ -33,6 +34,7 @@ Page({
     let that = this;
     if (e.detail.userInfo) {//如果用户授权
       app.globalData.nickname = e.detail.userInfo.nickName,
+      app.globalData.avatarUrl = e.detail.userInfo.avatarUrl,
       wx.showLoading({
         title: '授权中...',
       });
