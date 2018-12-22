@@ -4,4 +4,6 @@
 </view>
 
 <input maxlength='1' bindinput="bindKeyInput" type='text' placeholder="输入需要添加的文字"></input>
+
+<!-- <button class="weui-btn" bind:tap="exchange" type="primary">颜色文字切换</button> -->
 <text>*请将微信头像下载至本地使用，长按图片下载</text>

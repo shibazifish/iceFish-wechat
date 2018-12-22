@@ -10,6 +10,8 @@ Page({
     bgPic: null,
     canvasWidth: '',
     canvasHeight: '',
+    fontColor:'#FFD700',
+    colorList: ["#0000FF", "#87CEEB", "#FFFF00", "#FFFFFF", "#000000", "#3CB371", "#20B2AA", "#87CEEB", "#191970","#FFD700"],
   },
 
   /**
@@ -41,35 +43,42 @@ Page({
     var that = this;
     // 使用 wx.createContext 获取绘图上下文 context
     var ctx = wx.createCanvasContext('firstCanvas');
-    // ctx.setFillStyle("#FFD700");
-    // ctx.fillRect(0, 0, 360, 360);
     ctx.save();
-    ctx.clearRect(0, 0, 180, 180);
-    ctx.beginPath();
-    ctx.arc(88, 88, 88, 0, Math.PI * 2, false);
-    ctx.clip();
+    // ctx.clearRect(0, 0, 180, 180);
+    // ctx.beginPath();
+    // ctx.arc(88, 88, 88, 0, Math.PI * 2, false);
+    // ctx.clip();
     // ctx.drawImage(that.data.bgPic, 0, 0, 360);
     //从指定位置裁剪原始图片指定宽高，从指定位置开始显示到画布上指定宽高：
     ctx.drawImage(that.data.bgPic, 0, 0, that.data.canvasWidth, that.data.canvasHeight, 0, 0, 360, 360);
+    ctx.beginPath();
+    ctx.arc(88, 88, 88, 0, Math.PI * 2, true);
+    ctx.rect(0,0,360,360);
+    ctx.setFillStyle("white");
+    ctx.fill();
     ctx.restore();
-    ctx.drawImage('/static/images/contBg.png', 125, 125, 50,50);
+    ctx.drawImage('/static/images/contBg.png', 125, 125, 50, 50);
     ctx.draw();
   },
   bindKeyInput(e) {
     var that = this;
     var ctx = wx.createCanvasContext('firstCanvas');
-    ctx.clearRect(0, 0, 180, 180);
+    // ctx.clearRect(0, 0, 180, 180);
     ctx.save();
-    ctx.beginPath();
-    ctx.arc(88, 88, 88, 0, Math.PI * 2, false);
-    ctx.clip();
+    // ctx.beginPath();
+    // ctx.arc(88, 88, 88, 0, Math.PI * 2, false);
+    // ctx.clip();
     // ctx.drawImage(that.data.bgPic, 0, 0, 360);
     //从指定位置裁剪原始图片指定宽高，从指定位置开始显示到画布上指定宽高：
-    ctx.drawImage(that.data.bgPic, 0, 0, that.data.canvasWidth, that.data.canvasHeight, 0, 0, 360, 360);
+    ctx.drawImage(that.data.bgPic, 0, 0, that.data.canvasWidth, that.data.canvasHeight, 0, 0, 360, 360); ctx.beginPath();
+    ctx.arc(88, 88, 88, 0, Math.PI * 2, true);
+    ctx.rect(0, 0, 360, 360);
+    ctx.setFillStyle("white");
+    ctx.fill();
     ctx.restore();
     ctx.drawImage('/static/images/contBg.png', 125, 125, 50, 50);
     ctx.setFontSize(26);
-    ctx.setFillStyle('#FFD700');
+    ctx.setFillStyle(that.data.fontColor);
     ctx.fillText(e.detail.value, 140, 160);
     ctx.draw();
   },
@@ -78,6 +87,12 @@ Page({
    */
   onShow: function () {
 
+  },
+  exchange:function(){
+    var that = this;
+    that.setData({
+      fontColor:that.data.colorList[Math.floor(Math.random() * 10)],
+    });
   },
   onClick: function () {
     wx.canvasToTempFilePath({
