@@ -24,7 +24,7 @@ Page({
   getAvatar() {
     if (app.globalData.avatarUrl) {
       this.setData({
-        bgPic: app.globalData.avatarUrl,
+        bgPic: app.globalData.avatarUrl.substring(0, app.globalData.avatarUrl.length - 3)+"0",
       });
       this.assignPicChoosed();
     } else {
