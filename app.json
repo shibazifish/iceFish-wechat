@@ -1,14 +1,11 @@
 {
   "pages": [
     "pages/activity/activity",
-    "pages/games/games",
     "pages/tools/tools",
     "pages/grant/grant",
     "pages/activityDetail/activityDetail",
     "pages/clock/clock",
     "pages/rank/rank",
-    "pages/saolei/saolei",
-    "pages/chengyu/chengyu",
     "pages/weather/weather",
     "pages/combine/combine",
     "pages/hat/hat",
