@@ -11,6 +11,8 @@
     "pages/hat/hat",
     "pages/imageeditor/imageeditor",
     "pages/contPage/contPage",
+    "pages/starFont/starFont",
+    "pages/star/star",
     "pages/poster/poster"
   ],
   "window": {

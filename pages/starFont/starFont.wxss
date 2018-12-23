@@ -1,0 +1,4 @@
+/* pages/starFont/starFont.wxss */
+input{
+  margin-top: 50rpx;
+}

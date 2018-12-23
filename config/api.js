@@ -1,4 +1,4 @@
-// const ApiRootUrl = 'http://127.0.0.1:8083/icefish/wechat/';
+// const ApiRootUrl = 'http://127.0.0.1:8082/icefish/wechat/';
 const ApiRootUrl = 'https://www.taotieshop.club/icefish/wechat/';
 
 module.exports = {
@@ -12,5 +12,6 @@ module.exports = {
   ClockInfoUrl: ApiRootUrl + 'clock/info',//获取打卡信息
   UserInfoUrl: ApiRootUrl + 'user/get',//获取用户信息
   RankInfoUrl: ApiRootUrl + 'user/rank',//获取排行榜信息
-  ExchangeInfoUrl: ApiRootUrl + 'exchange/get',//获取兑奖记录
+  StarInfoUrl: ApiRootUrl + 'star/info',//获取明星列表
+  StarDetailUrl: ApiRootUrl + 'star/query',//获取明星详细
 };

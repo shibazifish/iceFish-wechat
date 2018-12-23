@@ -70,7 +70,8 @@ Page({
     // ctx.clip();
     // ctx.drawImage(that.data.bgPic, 0, 0, 360);
     //从指定位置裁剪原始图片指定宽高，从指定位置开始显示到画布上指定宽高：
-    ctx.drawImage(that.data.bgPic, 0, 0, that.data.canvasWidth, that.data.canvasHeight, 0, 0, 360, 360); ctx.beginPath();
+    ctx.drawImage(that.data.bgPic, 0, 0, that.data.canvasWidth, that.data.canvasHeight, 0, 0, 360, 360); 
+    ctx.beginPath();
     ctx.arc(88, 88, 88, 0, Math.PI * 2, true);
     ctx.rect(0, 0, 360, 360);
     ctx.setFillStyle("white");
