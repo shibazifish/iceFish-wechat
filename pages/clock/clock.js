@@ -21,6 +21,7 @@ Page({
     posterTimeColor: '',
     posterDataColor: '',
     posterInfoColor: '',
+    posterTitle:'博学而不穷，笃行而不倦。',
   },
 
   /**
@@ -54,13 +55,14 @@ Page({
           posterTimeColor: res.data.colorMap.POSTER_TIME_COLOR,
           posterDataColor: res.data.colorMap.POSTER_DATA_COLOR,
           posterInfoColor: res.data.colorMap.POSTER_INFO_COLOR,
+          posterTitle: res.data.colorMap.POSTER_TITLE == undefined ? '博学而不穷，笃行而不倦。' : res.data.colorMap.POSTER_TITLE,
         });
         if(isGoto){//是否跳转海报页面
           wx.navigateTo({
             url: '/pages/poster/poster?runData=' + that.data.wechatUser.countRunData 
               + '&days=' + that.data.clockInfo.length + '&posterColor=' + that.data.posterColor
               + '&posterTimeColor=' + that.data.posterTimeColor + '&posterDataColor=' + that.data.posterDataColor
-              + '&posterInfoColor=' + that.data.posterInfoColor,
+              + '&posterInfoColor=' + that.data.posterInfoColor + '&posterTitle=' + that.data.posterTitle,
           })
         }
       }

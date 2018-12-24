@@ -29,6 +29,7 @@ Page({
     this.setData({
       days: options.days,
       runData: options.runData,
+      posterTitle: options.posterTitle,
       posterColor: options.posterColor,
       posterTimeColor: options.posterTimeColor,
       posterDataColor: options.posterDataColor,
@@ -84,9 +85,9 @@ Page({
         ctx.setTextAlign('left');
         ctx.setFillStyle(that.data.posterDataColor);
         ctx.setFontSize(24);
-        ctx.fillText('我已在冰鱼运动累计打卡' + that.data.days + '天', 10, 60);
+        ctx.fillText(that.data.posterTitle, 10, 60);
         ctx.setFontSize(12);
-        ctx.fillText('累计' + that.data.runData + '步', 10, 80);
+        ctx.fillText('累计打卡' + that.data.days + '天' + that.data.runData + '步', 10, 80);
         //时间
         var nowDate = new Date();
         var year = nowDate.getFullYear();
