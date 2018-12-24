@@ -61,9 +61,9 @@ Page({
       open_id: app.globalData.openid,
       user_name: app.globalData.nickname
     }, 'POST').then(function (res) {
-      if (res.errno === 0 && res.data == 1) {
+      if (res.errno === 0) {
         wx.showToast({
-          title: '兑换成功',
+          title: res.data,
           icon:'success',
           duration:2000,
           success:function(){
@@ -76,15 +76,9 @@ Page({
             )
           }
         })
-      } else if (res.errno === 0 && res.data == 0) {
+      } else{
         wx.showToast({
-          title: '冰块不足！',
-          icon: 'none',
-          duration: 2000
-        })
-      }else if (res.errno === 0 && res.data == -1) {
-        wx.showToast({
-          title: '库存不足！',
+          title: res.errmsg,
           icon: 'none',
           duration: 2000
         })
