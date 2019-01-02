@@ -62,7 +62,8 @@ Page({
             url: '/pages/poster/poster?runData=' + that.data.wechatUser.countRunData 
               + '&days=' + that.data.clockInfo.length + '&posterColor=' + that.data.posterColor
               + '&posterTimeColor=' + that.data.posterTimeColor + '&posterDataColor=' + that.data.posterDataColor
-              + '&posterInfoColor=' + that.data.posterInfoColor + '&posterTitle=' + that.data.posterTitle,
+              + '&posterInfoColor=' + that.data.posterInfoColor + '&posterTitle=' + that.data.posterTitle
+              + '&nowRunData=' + that.data.runData,
           })
         }
       }

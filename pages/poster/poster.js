@@ -10,6 +10,7 @@ Page({
     icefishImg: "https://www.taotieshop.club/icefish/poster/icefish.png",
     days:"365",
     runData: "99999",
+    nowRunData:"999",
     clockInfo:'',
     wechatUser:'',
     posterColor: '#ECC542',
@@ -34,6 +35,7 @@ Page({
       posterTimeColor: options.posterTimeColor,
       posterDataColor: options.posterDataColor,
       posterInfoColor: options.posterInfoColor,
+      nowRunData: options.nowRunData,
     });
   },
 
@@ -87,7 +89,7 @@ Page({
         ctx.setFontSize(24);
         ctx.fillText(that.data.posterTitle, 10, 60);
         ctx.setFontSize(12);
-        ctx.fillText('累计打卡' + that.data.days + '天' + that.data.runData + '步', 10, 80);
+        ctx.fillText('今日运动' + that.data.nowRunData+'步，累计打卡' + that.data.days + '天' + that.data.runData + '步', 10, 80);
         //时间
         var nowDate = new Date();
         var year = nowDate.getFullYear();

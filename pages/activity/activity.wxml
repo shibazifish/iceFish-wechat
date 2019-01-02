@@ -1,5 +1,6 @@
 <!--pages/activity/activity.wxml-->
 <view wx:if="{{goodsInfo.length > 0}}">
+    <ad unit-id="adunit-3ebf0cb2e338b528"></ad>
     <view class="top">
       <view>
         <text class="txt">十二月活动震撼来袭</text>
