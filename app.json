@@ -1,6 +1,9 @@
 {
   "pages": [
     "pages/activity/activity",
+    "pages/activity/activityEdit",
+    "pages/prize/prize",
+    "pages/prizeDetail/prizeDetail",
     "pages/tools/tools",
     "pages/grant/grant",
     "pages/activityDetail/activityDetail",
@@ -29,7 +32,7 @@
     "color": "#666",
     "list": [
       {
-        "pagePath": "pages/activity/activity",
+        "pagePath": "pages/prize/prize",
         "iconPath": "static/images/ic_menu_prize_nor.png",
         "selectedIconPath": "static/images/ic_menu_prize_pressed.png",
         "text": "奖品兑换"

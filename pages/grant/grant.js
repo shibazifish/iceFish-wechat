@@ -51,7 +51,7 @@ Page({
         wx.hideLoading();
         if (res.errno === 0) {
           wx.switchTab({
-            url: '../activity/activity',
+            url: '/pages/prize/prize',
           });
         }else{
           wx.showToast({

@@ -9,12 +9,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    id:0,
-    prize:{},
-    exchangeResult:'',
+    id: 0,
+    prize: {},
+    exchangeResult: '',
     exchangeRecord: '',
-    nickname:app.globalData.nickname,
-    avatarUrl:app.globalData.avatarUrl
+    nickname: app.globalData.nickname,
+    avatarUrl: app.globalData.avatarUrl
   },
 
   /**
@@ -66,20 +66,20 @@ Page({
       if (res.errno === 0) {
         wx.showToast({
           title: res.data,
-          icon:'success',
-          duration:2000,
-          success:function(){
+          icon: 'success',
+          duration: 2000,
+          success: function () {
             setTimeout(
               function () {
                 var timestamp = Date.parse(new Date());
                 that.setData({
-                  exchangeResult: '兑换码:' + app.globalData.openid + timestamp +'\n点击复制兑换码，联系客服兑换！',
+                  exchangeResult: '兑换码:' + app.globalData.openid + timestamp + '\n点击复制兑换码，联系客服兑换！',
                 })
-              },2000
+              }, 2000
             )
           }
         })
-      } else{
+      } else {
         wx.showToast({
           title: res.errmsg,
           icon: 'none',

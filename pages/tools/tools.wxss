@@ -16,3 +16,11 @@
   border-radius: 5vw;
   font: bold;
 }
+.viewBtn{
+  padding-top: 80vh;
+  margin-top: 15rpx;
+}
+button{
+  padding-top: 15rpx;
+  width: 95vw;
+}

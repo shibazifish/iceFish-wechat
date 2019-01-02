@@ -1,4 +1,4 @@
-<!--pages/activityDetail/activityDetail.wxml-->
+<!--pages/prizeDetail/prizeDetail.wxml-->
 <view>
     <view class="goods-info">
           <view class="c">
@@ -29,3 +29,4 @@
         </view>
       </view>
 </view>
+

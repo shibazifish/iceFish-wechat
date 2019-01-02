@@ -20,6 +20,7 @@ App({
             }, 'GET').then(function (res) {
               if (res.errno === 0) {
                 that.globalData.nickname = res.data.nickName;
+                that.globalData.avatarUrl = res.data.avatarUrl;
               }
             });
           }
@@ -27,16 +28,6 @@ App({
         });
       }
     });
-    wx.cloud.init({
-      env: 'dev-icefh',
-      traceUser: true,
-    })
-    wx.getSystemInfo({
-      success: (res) => {
-        this.globalData.systeminfo = res
-        this.globalData.isIPhoneX = /iphonex/gi.test(res.model.replace(/\s+/, ''))
-      },
-    })
   },
   
   globalData: {

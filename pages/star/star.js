@@ -98,7 +98,7 @@ Page({
     return {
       title: '每天走路就能兑礼品啦！',
       imageUrl: '../../static/images/hongbao.jpg',
-      path: '/pages/activity/activity?inviter=' + app.globalData.openid,// 用户点击首先进入的当前页面
+      path: '/pages/prize/prize?inviter=' + app.globalData.openid,// 用户点击首先进入的当前页面
       success: function (res) {
         // 转发成功
         console.log("转发成功:");

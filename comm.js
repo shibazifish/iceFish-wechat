@@ -20,6 +20,7 @@ function login() {
           }, 'GET').then(function (res) {
             if (res.errno === 0) {
               app.globalData.nickname = res.data.nickName;
+              app.globalData.avatarUrl = res.data.avatarUrl;
             } else {
               wx.navigateTo({
                 url: '/pages/grant/grant'

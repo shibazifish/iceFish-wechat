@@ -3,9 +3,11 @@ const app = getApp();
 var config = {
   data: {
     disable: false,
+    nickname: app.globalData.nickname,
+    avatarUrl: app.globalData.avatarUrl,
     toolList: [{ 'name': '圣诞帽', 'color': '#32CD32', 'page': 'hat' },
      { 'name': '明星举牌', 'color': '#006400', 'page': 'star' },
-    // { 'name': '猜成语', 'color': '#000000', 'page': 'chengyu' },
+    { 'name': '活动中心', 'color': '#000000', 'page': 'activity' },
       // { 'name': '天气情况', 'color': '#CD5C5C', 'page': 'weather' }
     ]
   },

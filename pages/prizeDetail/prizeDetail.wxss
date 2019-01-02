@@ -1,4 +1,4 @@
-/* pages/activityDetail/activityDetail.wxss */
+/* pages/prizeDetail/prizeDetail.wxss */
 .container{
     margin-bottom: 100rpx;
 }

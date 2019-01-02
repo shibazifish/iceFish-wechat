@@ -1,30 +1,4 @@
 <!--pages/activity/activity.wxml-->
-<view wx:if="{{goodsInfo.length > 0}}">
-    <ad unit-id="adunit-3ebf0cb2e338b528"></ad>
-    <view class="top">
-      <view>
-        <text class="txt">十二月活动震撼来袭</text>
-      </view>
-      <view class="example">
-  <view class="marquee_box">
-    <view class="marquee_text" style="{{orientation}}:{{marqueeDistance2}}px;font-size: {{size}}px;">
-      <text>{{notice}}</text>
-      <text wx:if="{{marquee2copy_status}}" style="margin-left:{{marquee2_margin}}px;">{{notice}}</text>
-    </view>
-  </view>
+<view >
+  <button class='weui-btn' bindtap='doAddActivity' type='primary'>发布活动</button>
 </view>
-    </view>
-    <view class="content">
-      <view class="box" wx:for="{{goodsInfo}}" wx:for-index="index" wx:key="{{item.goods_id}}">
-        <navigator url="../activityDetail/activityDetail?id={{item.goods_id}}">
-          <image class="img" src="{{item.goods_url}}" background-size="cover" />
-          <text class="name">{{item.goods_name}}</text>
-          <text class="desc">库存：{{item.goods_num}}</text>
-          <view class="charge">
-          <view class="price">{{item.goods_ice}}</view>
-          <image class="ice-fish" src="../../static/images/ice.png"/>
-          </view>
-        </navigator>
-      </view>
-    </view>
-  </view>
