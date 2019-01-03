@@ -1,4 +1,37 @@
 <!--pages/activity/activity.wxml-->
 <view >
   <button class='weui-btn' bindtap='doAddActivity' type='primary'>发布活动</button>
+  <view class='ac'>
+      <view class="item" wx:for="{{activityInfo}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.activity_id}}">
+        <view class="weui-form-preview">
+          <view class="weui-form-preview__hd">
+              <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">活动名称</view>
+                  <view class="weui-form-preview__value_in-hd">{{item.activity_name}}</view>
+              </view>
+          </view>
+          <view class="weui-form-preview__bd">
+              <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">创建人</view>
+                  <view class="weui-form-preview__value">{{item.create_name}}</view>
+              </view>
+              <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">创建时间</view>
+                  <view class="weui-form-preview__value">{{item.create_time}}</view>
+              </view>
+              <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">活动简介</view>
+                  <view class="weui-form-preview__value">{{item.activity_desc}}</view>
+              </view>
+              <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">活动状态</view>
+                  <view class="weui-form-preview__value">{{item.activity_status}}</view>
+              </view>
+          </view>
+          <view class="weui-form-preview__ft">
+              <navigator url="" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">报名</navigator>
+          </view>
+      </view>
+    </view>
+  </view>
 </view>

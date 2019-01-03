@@ -27,19 +27,12 @@ Page({
    */
   getActivityInfo: function () {
     let that = this;
-    util.request(api.GoodsInfoUrl).then(function (res) {
+    util.request(api.ActivityGetUrl).then(function (res) {
       wx.hideLoading();
       if (res.errno === 0) {
-        if (res.data.notice == undefined) {
-          that.setData({
-            goodsInfo: res.data,
-          });
-        } else {
-          that.setData({
-            goodsInfo: res.data.prize,
-            notice: res.data.notice.para_value,
-          });
-        }
+        that.setData({
+          activityInfo: util.formatJsonTime(res.data, 'create_time'),
+        });
       }
     });
   },
@@ -47,7 +40,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
 
   /**
@@ -74,7 +66,11 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    var that = this;
+    wx.showLoading({
+      title: '数据加载中...',
+    })
+    that.getActivityInfo();
   },
 
   /**

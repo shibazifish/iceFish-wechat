@@ -1,19 +1,23 @@
 <!--pages/activity/activityEdit.wxml-->
 <view>
-  <form class="weui-cells weui-cells_after-title">
+  <form class="weui-cells weui-cells_after-title" bindsubmit='formSubmit'>
+    <input name="start_time" hidden='true' value='{{start_time}}'/>
+    <input name="end_time" hidden='true' value='{{end_time}}'/>
+    <input name="creator" hidden='true' />
+    <input name="create_name" hidden='true' />
     <view class="weui-cell weui-cell_input">
         <view class="weui-cell__hd">
             <view class="weui-label">活动名称</view>
         </view>
         <view class="weui-cell__bd">
-            <input class="weui-input" placeholder="请输入活动名称"/>
+            <input name="activity_name" class="weui-input" placeholder="请输入活动名称"/>
         </view>
     </view>
     <view class="weui-cells__title">活动简介</view>
     <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
             <view class="weui-cell__bd">
-                <input class="weui-input" placeholder="请输入活动简介" />
+                <input name="activity_desc" class="weui-input" placeholder="请输入活动简介" />
             </view>
         </view>
     </view>
@@ -22,8 +26,8 @@
             <view class="weui-label">开始日期</view>
         </view>
         <view class="weui-cell__bd">
-            <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
-                <view class="weui-input">{{date}}</view>
+            <picker mode="date" name="startDate" value="{{startDate}}" start="2015-09-01" end="2017-09-01" bindchange="bindStartDateChange">
+                <view class="weui-input">{{startDate}}</view>
             </picker>
         </view>
     </view>
@@ -32,8 +36,8 @@
             <view class="weui-label">开始时间</view>
         </view>
         <view class="weui-cell__bd">
-            <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
-                <view class="weui-input">{{time}}</view>
+            <picker mode="time" name="startTime" value="{{startTime}}" start="09:01" end="21:01" bindchange="bindStartTimeChange">
+                <view class="weui-input">{{startTime}}</view>
             </picker>
         </view>
     </view>
@@ -42,8 +46,8 @@
             <view class="weui-label">结束日期</view>
         </view>
         <view class="weui-cell__bd">
-            <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
-                <view class="weui-input">{{date}}</view>
+            <picker mode="date" name="endDate" value="{{endDate}}" start="2015-09-01" end="2017-09-01" bindchange="bindEndDateChange">
+                <view class="weui-input">{{endDate}}</view>
             </picker>
         </view>
     </view>
@@ -52,8 +56,8 @@
             <view class="weui-label">结束时间</view>
         </view>
         <view class="weui-cell__bd">
-            <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
-                <view class="weui-input">{{time}}</view>
+            <picker mode="time" name="endTime" value="{{endTime}}" start="09:01" end="21:01" bindchange="bindEndTimeChange">
+                <view class="weui-input">{{endTime}}</view>
             </picker>
         </view>
     </view>
@@ -61,7 +65,7 @@
     <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell">
             <view class="weui-cell__bd">
-                <textarea class="weui-textarea" placeholder="请输入活动内容" style="height: 3.3em" />
+                <textarea name="activity_info" class="weui-textarea" placeholder="请输入活动内容" style="height: 3.3em" />
                 <view class="weui-textarea-counter">0/200</view>
             </view>
         </view>

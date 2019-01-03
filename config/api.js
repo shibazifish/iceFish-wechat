@@ -15,4 +15,8 @@ module.exports = {
   ExchangeInfoUrl: ApiRootUrl + 'exchange/get',//获取兑换信息
   StarInfoUrl: ApiRootUrl + 'star/info',//获取明星列表
   StarDetailUrl: ApiRootUrl + 'star/query',//获取明星详细
+  //活动相关
+  ActivityAddUrl: ApiRootUrl + 'activity/add',//新增活动
+  ActivityGetUrl: ApiRootUrl + 'activity/get',//获取活动信息
+  ActivityQueryUrl: ApiRootUrl + 'activity/query',//查询活动信息
 };
