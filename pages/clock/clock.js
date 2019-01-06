@@ -49,7 +49,7 @@ Page({
       wx.hideLoading();
       if (res.errno === 0) {
         that.setData({
-          clockInfo: util.formatJsonTime(res.data.clock,'create_time'),
+          clockInfo: util.formatJsonTime(res.data.clock,['create_time']),
           wechatUser: res.data.wechatUser,
           posterColor: res.data.colorMap.POSTER_COLOR,
           posterTimeColor: res.data.colorMap.POSTER_TIME_COLOR,

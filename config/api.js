@@ -4,7 +4,7 @@ const ApiRootUrl = 'https://www.taotieshop.club/icefish/wechat/';
 module.exports = {
   GoodsInfoUrl:ApiRootUrl+'prize/info',//奖品信息
   GoodsDetailUrl: ApiRootUrl + 'prize/query',//奖品明细信息
-  EnterAddUrl: ApiRootUrl + 'exchange/add',//兑换奖品
+  ExchangeAddUrl: ApiRootUrl + 'exchange/add',//兑换奖品
   UserAddUrl: ApiRootUrl + 'user/add',//插入微信用户信息
   UserLoginUrl: ApiRootUrl + 'user/login',//登录微信
   ImageAddUrl: ApiRootUrl + 'image/upload', //图片上传
@@ -19,4 +19,9 @@ module.exports = {
   ActivityAddUrl: ApiRootUrl + 'activity/add',//新增活动
   ActivityGetUrl: ApiRootUrl + 'activity/get',//获取活动信息
   ActivityQueryUrl: ApiRootUrl + 'activity/query',//查询活动信息
+  //报名相关
+  EnterAddUrl: ApiRootUrl +'enter/add',//新增报名信息
+  EnterGetUrl: ApiRootUrl + 'enter/get',//获取所有报名信息
+  EnterInfoUrl: ApiRootUrl + 'enter/info',//通过id获取报名信息
+  EnterAuditUrl: ApiRootUrl + 'enter/audit',//审核报名信息
 };

@@ -15,9 +15,11 @@ function formatTime(date) {
 /**
  * 格式化返回数据中的某个字段
  */
-function formatJsonTime(jsonArr,fieldName){
+function formatJsonTime(jsonArr,fieldNames){
   for (let i = 0; i < jsonArr.length; i++) {
-    jsonArr[i][fieldName] = this.formatTime(new Date(jsonArr[i][fieldName]));
+    for(let j = 0;j<fieldNames.length;j++){
+      jsonArr[i][fieldNames[j]] = this.formatTime(new Date(jsonArr[i][fieldNames[j]])).replace(/-/g, "/");
+    }
   }
   return jsonArr;
 }

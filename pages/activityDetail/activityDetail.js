@@ -10,58 +10,74 @@ Page({
    */
   data: {
     id:0,
-    prize:{},
-    exchangeResult:'',
-    exchangeRecord: '',
-    nickname:app.globalData.nickname,
-    avatarUrl:app.globalData.avatarUrl
+    activity:{},
+    enterRecord: '',
+    isAuditor:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
+    if (options.inviter != undefined) {
+      that.setData({
+        inviter: options.inviter,
+      })
+      console.log("inviter:" + options.inviter);
+    } 
+    if (app.globalData.nickname == '') {
+      wx.navigateTo({
+        url: '/pages/grant/grant?inviter=' + that.data.inviter,
+      })
+    }
     // 页面初始化 options为页面跳转所带来的参数
-    this.setData({
+    that.setData({
       id: parseInt(options.id)
       // id: 1181000
     });
-    var that = this;
-    this.getPrizeDetail();
-    this.getExchangeInfo();
+    this.getActivityDetail();
+    this.getEnterInfo();
   },
   /**
-   * 获取奖品明细
+   * 获取活动明细
    */
-  getPrizeDetail: function () {
+  getActivityDetail: function () {
     let that = this;
-    util.request(api.GoodsDetailUrl, { id: that.data.id }).then(function (res) {
+    util.request(api.ActivityQueryUrl, { activityId: that.data.id }).then(function (res) {
       if (res.errno === 0) {
+        let newIsAuditor = res.data.creator == app.globalData.openid;
         that.setData({
-          prize: res.data
+          activity: util.formatJsonTime([res.data], ['start_time', 'end_time','create_time'])
+        [0],
+          isAuditor: newIsAuditor,
         });
       }
     });
   },
   /**
-   * 获取兑奖历史记录
+   * 获取报名记录
    */
-  getExchangeInfo: function () {
+  getEnterInfo: function () {
     let that = this;
-    util.request(api.ExchangeInfoUrl, { prizeId: that.data.id }).then(function (res) {
+    util.request(api.EnterGetUrl, { activity_id: that.data.id }).then(function (res) {
       if (res.errno === 0) {
         that.setData({
-          exchangeRecord: util.formatJsonTime(res.data, 'create_date'),
+          enterRecord: util.formatJsonTime(res.data, ['create_date']),
         });
       }
     });
   },
+  /**
+   * 报名
+   */
   onEnter() {
     let that = this;
     util.request(api.EnterAddUrl, {
-      goods_id: that.data.id,
-      open_id: app.globalData.openid,
-      user_name: app.globalData.nickname
+      activity_id: that.data.id,
+      creator: app.globalData.openid,
+      create_name: app.globalData.nickname,
+      avatarUrl: app.globalData.avatarUrl,
     }, 'POST').then(function (res) {
       if (res.errno === 0) {
         wx.showToast({
@@ -69,14 +85,7 @@ Page({
           icon:'success',
           duration:2000,
           success:function(){
-            setTimeout(
-              function () {
-                var timestamp = Date.parse(new Date());
-                that.setData({
-                  exchangeResult: '兑换码:' + app.globalData.openid + timestamp +'\n点击复制兑换码，联系客服兑换！',
-                })
-              },2000
-            )
+
           }
         })
       } else{
@@ -93,15 +102,11 @@ Page({
    * 点击复制文字
    */
   copyText: function (e) {
-    var that = this;
     wx.setClipboardData({
-      data: that.data.exchangeResult,
+      data: e.currentTarget.id,
       success: function (res) {
         wx.getClipboardData({
           success: function (res) {
-            that.setData({
-              exchangeResult: '',
-            })
             wx.showToast({
               title: '复制成功'
             })
@@ -109,6 +114,35 @@ Page({
         })
       }
     })
+  },
+  /**
+   * 审核报名信息
+   */
+  onAudit:function(e){
+    let that = this;
+    util.request(api.EnterAuditUrl, {
+      enter_id: e.currentTarget.id,
+    }, 'POST').then(function (res) {
+      if (res.errno === 0) {
+        wx.showToast({
+          title: res.data,
+          icon: 'success',
+          duration: 2000,
+          success: function () {
+            wx.navigateTo({
+              url: '/pages/activityDetail/activityDetail?id='+that.data.id,
+            })
+          }
+        })
+      } else {
+        wx.showToast({
+          title: res.errmsg,
+          icon: 'none',
+          duration: 2000
+        })
+      }
+      console.log(res)
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -156,10 +190,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+    var that = this;
     return {
-      title: '快帮我拆一下这个红包！',
-      imageUrl: '../../static/images/hongbao.jpg',
-      path: '/pages/prize/prize?inviter=' + app.globalData.openid,// 用户点击首先进入的当前页面
+      title: app.globalData.nickname + '邀请你参加' + that.data.activity.activity_name,
+      path: '/pages/activityDetail/activityDetail?inviter=' + app.globalData.openid + '&id=' + that.data.id,// 用户点击首先进入的当前页面
       success: function (res) {
         // 转发成功
         console.log("转发成功:");

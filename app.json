@@ -2,6 +2,7 @@
   "pages": [
     "pages/prize/prize",
     "pages/activity/activity",
+    "pages/enter/enter",
     "pages/activity/activityEdit",
     "pages/prizeDetail/prizeDetail",
     "pages/tools/tools",

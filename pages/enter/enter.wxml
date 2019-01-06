@@ -1,0 +1,28 @@
+<!--pages/enter/enter.wxml-->
+<view>
+  <form class="weui-cells weui-cells_after-title" bindsubmit='formSubmit'>
+    <input name="activity_id" hidden='true' value='{{activity_id}}'/>
+    <input name="avatarUrl" hidden='true' value='{{avatarUrl}}'/>
+    <input name="creator" hidden='true' value='{{openid}}'/>
+    <input name="create_name" hidden='true' value='{{nickname}}'/>
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">微信号</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input name="wechat_number" class="weui-input" placeholder="请输入微信号"/>
+        </view>
+    </view>
+    <view class="weui-cells__title">备注</view>
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+            <view class="weui-cell__bd">
+                <textarea name="enter_desc" class="weui-textarea" placeholder="请输入备注信息" style="height: 3.3em" />
+                <view class="weui-textarea-counter">0/200</view>
+            </view>
+        </view>
+    </view>
+      <button class='weui-btn' type='primary' form-type="submit">提交</button>
+  </form>
+</view>
+

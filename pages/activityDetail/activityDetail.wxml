@@ -1,31 +1,58 @@
 <!--pages/activityDetail/activityDetail.wxml-->
 <view>
-    <view class="goods-info">
-          <view class="c">
-            <text class="name">{{prize.goods_name}}</text>
-            <text class="desc">{{prize.goods_desc}}</text>
-            <text class="desc">{{prize.goods_detail}}</text>
-            <text class="desc">库存：{{prize.goods_num}}</text>
-            <text class="price">好友:{{prize.goods_price}}名 {{prize.goods_ice}}冰块</text>
-          </view>
-      </view>
-
-      <view>
-        <button size="mini" type="primary" session-from= '{"nickName":"{{nickname}}", "avatarUrl":"{{avatarUrl}}"' class="weui-btn mini-btn" open-type="contact">联系客服</button>
-        <button size="mini" type="default" class="weui-btn mini-btn" bindtap="onEnter">立即兑换</button>
-        <button size="mini" class="weui-btn mini-btn" open-type="share" bindtap="onShareAppMessage" type="primary" size="mini">邀请好友</button>
-      </view>
-      <view bindtap='copyText'>{{exchangeResult}}</view>
-       <view class="b">
-        <view class="item" wx:for="{{exchangeRecord}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.record_id}}">
-            <image class="img" src="{{item.avatarUrl}}" background-size="cover"></image>
-            <view class="right">
-              <view class="text">
-                <text class="name">{{item.nickName}}</text>
-                <text class="price">{{item.goods_name}}</text>
-                <text class="desc">{{item.create_date}}</text>
-              </view>
+  <view class="weui-form-preview">
+    <view class="weui-form-preview__hd">
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">活动名称</view>
+            <view class="weui-form-preview__value_in-hd">{{activity.activity_name}}</view>
+        </view>
+    </view>
+    <view class="weui-form-preview__bd">
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">创建人</view>
+            <view class="weui-form-preview__value">{{activity.create_name}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">创建时间</view>
+            <view class="weui-form-preview__value">{{activity.create_time}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">活动简介</view>
+            <view class="weui-form-preview__value">{{activity.activity_desc}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">活动时间</view>
+            <view class="weui-form-preview__value">{{activity.start_time}}至{{activity.end_time}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">活动状态</view>
+            <view class="weui-form-preview__value">{{activity.activity_status}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">活动详细</view>
+            <view class="weui-form-preview__value">{{activity.activity_info}}</view>
+        </view>
+    </view>
+    <view class="weui-form-preview__ft">
+        <navigator url="/pages/enter/enter?id={{activity.activity_id}}" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">报名</navigator>
+    </view>
+  </view>
+  <view class="weui-panel weui-panel_access">
+            <view class="weui-panel__hd">报名人员列表</view>
+            <view class="weui-panel__bd">
+                <view wx:for="{{enterRecord}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.enter_id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <image class="weui-media-box__thumb" src="{{item.avatarUrl}}" />
+                    </view>
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                        <view bindtap='copyText' id="{{item.wechat_number}}" class="weui-media-box__title">{{item.create_name}} {{item.wechat_number}}</view>
+                        <view class="weui-media-box__title">
+                          {{item.enter_status}}
+                          <button bindtap='onAudit' id="{{item.enter_id}}" class="weui-btn mini-btn" wx:if="{{isAuditor}}" type="primary" size="mini">审核</button>
+                        </view>
+                        <view class="weui-media-box__desc">{{item.enter_desc}}</view>
+                    </view>
+                </view>
             </view>
         </view>
-      </view>
 </view>

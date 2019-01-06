@@ -1,4 +1,4 @@
-// pages/activity/activityEdit.js
+// pages/enter/enter.js
 const util = require('../../utils/util.js');
 const api = require('../../config/api.js');
 const user = require('../../services/user.js');
@@ -10,22 +10,28 @@ Page({
    * 页面的初始数据
    */
   data: {
-    startDate: '2019-01-01',
-    startTime: '12:01',
-    endDate: '2019-01-01',
-    endTime: '12:01',
-    start_time:'',
-    end_time:'',
+    activity_id:0,
+    nickname: '',
+    avatarUrl: '',
+    openid:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // 页面初始化 options为页面跳转所带来的参数
     if (app.globalData.nickname == '') {
       wx.navigateTo({
         url: '/pages/grant/grant',
       })
+    }else{
+      this.setData({
+        activity_id: parseInt(options.id),
+        nickname: app.globalData.nickname,
+        avatarUrl: app.globalData.avatarUrl,
+        openid: app.globalData.openid,
+      });
     }
   },
 
@@ -77,57 +83,29 @@ Page({
   onShareAppMessage: function () {
 
   },
-/**
- * 绑定日期
- */
-  bindStartDateChange: function (e) {
-    this.setData({
-      startDate: e.detail.value
-    })
-  },
-  bindStartTimeChange: function (e) {
-    this.setData({
-      startTime: e.detail.value
-    })
-  },
-  /**
-   * 绑定日期
-   */
-  bindEndDateChange: function (e) {
-    this.setData({
-      endDate: e.detail.value
-    })
-  },
-  bindEndTimeChange: function (e) {
-    this.setData({
-      endTime: e.detail.value
-    })
-  },
   /**
    * 表单提交
    */
   formSubmit(e) {
-    let activityData = e.detail.value;
-    activityData.start_time = activityData.startDate + " " + activityData.startTime+":00";
-    activityData.end_time = activityData.endDate + " " + activityData.endTime + ":00";
-    activityData.creator = app.globalData.openid;
-    activityData.create_name = app.globalData.nickname;
+    let that = this;
+    let enterData = e.detail.value;
     //ActivityAddUrl
-    util.request(api.ActivityAddUrl, activityData, 'POST').then(function (res) {
+    util.request(api.EnterAddUrl, enterData, 'POST').then(function (res) {
       if (res.errno === 0) {
         wx.showToast({
           title: res.data,
           icon: 'success',
-          duration: 3000,
+          duration: 1500,
           success: function () {
             setTimeout(
-              wx.navigateTo({
-                url: '/pages/activity/activity',
-              }), 4200
+              function () {
+                wx.navigateTo({
+                  url: '/pages/activityDetail/activityDetail?id=' + enterData.activity_id,
+                })}, 1600
             )
           }
         })
-      }else{//新增失败
+      } else {//新增失败
         wx.showToast({
           title: res.errmsg,
           icon: 'none',

@@ -51,14 +51,14 @@ Page({
     util.request(api.ExchangeInfoUrl, { prizeId: that.data.id }).then(function (res) {
       if (res.errno === 0) {
         that.setData({
-          exchangeRecord: util.formatJsonTime(res.data, 'create_date'),
+          exchangeRecord: util.formatJsonTime(res.data, ['create_date']),
         });
       }
     });
   },
   onEnter() {
     let that = this;
-    util.request(api.EnterAddUrl, {
+    util.request(api.ExchangeAddUrl, {
       goods_id: that.data.id,
       open_id: app.globalData.openid,
       user_name: app.globalData.nickname
