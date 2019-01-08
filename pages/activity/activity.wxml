@@ -1,6 +1,6 @@
 <!--pages/activity/activity.wxml-->
 <view >
-  <view class="weui-cells__title"><button class='weui-btn' bindtap='doAddActivity' type='primary'>发布活动</button></view>
+  <!-- <view class="weui-cells__title"><button class='weui-btn' bindtap='doAddActivity' type='primary'>发布活动</button></view> -->
     <view class="weui-cells weui-cells_after-title">
         <navigator wx:for="{{activityInfo}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.activity_id}}" url="/pages/activityDetail/activityDetail?id={{item.activity_id}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
             <view class="weui-cell__bd">{{item.activity_name}}</view>
