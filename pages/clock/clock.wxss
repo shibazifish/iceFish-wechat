@@ -62,7 +62,7 @@ button{
   line-height: 60rpx;
 }
 .c{
-  height: calc(100vh - 290rpx);
+  height: calc(100vh - 550rpx);
   overflow: scroll;
   margin-top: 10rpx;
 }

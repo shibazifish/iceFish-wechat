@@ -5,18 +5,10 @@
     "pages/enter/enter",
     "pages/activity/activityEdit",
     "pages/prizeDetail/prizeDetail",
-    "pages/tools/tools",
     "pages/grant/grant",
     "pages/activityDetail/activityDetail",
     "pages/clock/clock",
     "pages/rank/rank",
-    "pages/weather/weather",
-    "pages/combine/combine",
-    "pages/hat/hat",
-    "pages/imageeditor/imageeditor",
-    "pages/contPage/contPage",
-    "pages/starFont/starFont",
-    "pages/star/star",
     "pages/poster/poster"
   ],
   "window": {
@@ -39,6 +31,12 @@
         "text": "奖品兑换"
       },
       {
+        "pagePath": "pages/activity/activity",
+        "iconPath": "static/images/ic_menu_tool_nor.png",
+        "selectedIconPath": "static/images/ic_menu_tool_pressed.png",
+        "text": "活动中心"
+      },
+      {
         "pagePath": "pages/clock/clock",
         "iconPath": "static/images/ic_menu_clock_nor.png",
         "selectedIconPath": "static/images/ic_menu_clock_pressed.png",
@@ -49,12 +47,6 @@
         "iconPath": "static/images/ic_menu_rank_nor.png",
         "selectedIconPath": "static/images/ic_menu_rank_pressed.png",
         "text": "排行榜"
-      },
-      {
-        "pagePath": "pages/tools/tools",
-        "iconPath": "static/images/ic_menu_tool_nor.png",
-        "selectedIconPath": "static/images/ic_menu_tool_pressed.png",
-        "text": "小工具"
       }
     ]
   },

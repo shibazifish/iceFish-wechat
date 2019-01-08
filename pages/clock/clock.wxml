@@ -13,6 +13,7 @@
         <button class="weui-btn mini-btn" bindtap="bindGetRunData" type="default" size='mini'>步数打卡得冰块</button>
         <button class="weui-btn mini-btn" open-type="share" bindtap="onShareAppMessage" type="primary" size="mini">邀请好友得冰块</button>
       </view>
+      <ad unit-id="adunit-7e647c3f902d90aa"></ad>
       <view class='c'>
         <view class="item" wx:for="{{clockInfo}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.clock_id}}">
         

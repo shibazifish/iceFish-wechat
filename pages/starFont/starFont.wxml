@@ -1,7 +1,0 @@
-<!--pages/starFont/starFont.wxml-->
-<view>
-  <canvas canvas-id="firstCanvas" style='height:{{starInfo.img_height}}rpx;width:{{starInfo.img_width}}rpx;margin-left:{{leftW}};' bindlongtap='onClick'>
-  </canvas>
-  <input style='width:{{starInfo.img_width}}rpx;margin-left:{{leftW}};' bindinput="bindKeyInput" type='text' placeholder="输入需要添加的文字，仅供娱乐，侵删"></input>
-  <button class="weui-btn" bindtap='bindSubmit' type="primary">提交</button>
-</view>
