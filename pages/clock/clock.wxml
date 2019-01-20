@@ -11,8 +11,8 @@
        </view>
        <form bindsubmit="bindGetRunData" report-submit="true">
        <view class="button-sp-area">
-        <button class="weui-btn mini-btn" form-type="submit" type="default" size='mini'>步数打卡得冰块</button>
-        <button class="weui-btn mini-btn" open-type="share" bindtap="onShareAppMessage" type="primary" size="mini">邀请好友得冰块</button>
+        <button class="weui-btn mini-btn" form-type="submit" type="default" size='mini'>步数打卡</button>
+        <button class="weui-btn mini-btn" open-type="share" bindtap="onShareAppMessage" type="primary" size="mini">邀请好友</button>
       </view>
       </form>
       <ad unit-id="adunit-7e647c3f902d90aa"></ad>
