@@ -69,9 +69,11 @@ Page({
       }
     });
   },
-  bindGetRunData() {
+  bindGetRunData(e) {
     //获取用户的登录信息
     var that = this;
+    let form_id = e.detail.formId;
+    console.log("form_id:" + form_id);
     wx.showLoading({
       title: '信息获取中...',
     })
@@ -87,7 +89,8 @@ Page({
           encryptedData: that.data.encryptedData,
           iv: that.data.iv,
           session_key: app.globalData.session_key,
-          open_id: app.globalData.openid
+          open_id: app.globalData.openid,
+          form_id: form_id
         }, 'POST').then(function (res) {
           if (res.errno === 0) {
             wx.showToast({
