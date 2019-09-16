@@ -24,4 +24,7 @@ module.exports = {
   EnterGetUrl: ApiRootUrl + 'enter/get',//获取所有报名信息
   EnterInfoUrl: ApiRootUrl + 'enter/info',//通过id获取报名信息
   EnterAuditUrl: ApiRootUrl + 'enter/audit',//审核报名信息
+  //宝宝观测
+  BabyActiveAdd: ApiRootUrl + 'baby/addBabyActive',//新增宝宝活动
+  QueryBabyActive: ApiRootUrl +'baby/query',//获取宝宝观测记录
 };

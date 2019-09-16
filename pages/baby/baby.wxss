@@ -1,0 +1,23 @@
+/* pages/baby/baby.wxss */
+.vwBaby{
+  margin-left: 15rpx;
+  margin-top: 15rpx;
+}
+.vwActiv{
+  margin-left: 15rpx;
+  float: left;
+}
+.record{
+  margin-top: 15rpx;
+  float: none;
+  margin-left: 50rpx;
+  height: 900rpx;
+  overflow: scroll;
+}
+.vwRecordInfo{
+  margin-top: 15rpx;
+  float: none;
+}
+.vwRecordInfo text{
+  margin-left: 15rpx;
+}

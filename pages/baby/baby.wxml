@@ -1,0 +1,18 @@
+<!--pages/baby/baby.wxml-->
+<view class="main">
+<view class="record">
+    <view class="vwRecordInfo" wx:for="{{babyActiveList}}" wx:for-item="babyActive" wx:for-index="idx" wx:key="{{babyActive.id}}">
+    <text>{{babyActive.babyName}}</text>
+    <text>{{babyActive.activeName}}</text>
+    <text>{{babyActive.activeDate}}</text>
+    </view>
+  </view>
+  <view class="activBtn">
+    <view class="vwBaby" wx:for="{{babyList}}" wx:for-index="idx" wx:key="idx" wx:for-item="babyName">
+      <view class="vwActiv" wx:for="{{activityList}}" wx:for-index="idx" wx:key="idx" wx:for-item="activityName">
+        <button class="weui-btn mini-btn" type="default" bindtap='onAddActive' data-active="{{activityName}}" data-baby="{{babyName}}" size="mini">{{babyName}}{{activityName}}</button>
+      </view>
+    </view> 
+  </view>
+  
+</view>
